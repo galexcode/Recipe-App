@@ -161,6 +161,18 @@ function displayRecipe() {
 	});
 }
 
+function displayEditableRecipe() {
+	var recipe = retrieveRecipe();
+	$('#recipeName').val(recipe.name);
+	$('#recipeYield').val(recipe.yield);
+	$('#recipeActiveTime').val(recipe.activeTime);
+	$('#recipeTotalTime').val(recipe.totalTime);
+	$('#recipeCategory').val(recipe.category);
+	$('#recipeIngredients').val(recipe.ingredients.join('\n'));
+	$('#recipeInstructions').val(recipe.instructions.join('\n'));
+	$('#recipeNotes').val(recipe.notes);
+	$('#recipeTags').val(recipe.tags.join(','));
+}
 
 
 
