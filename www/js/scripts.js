@@ -77,6 +77,9 @@ function cameraFailure(){
 	alert("Error");
 }
 
+
+
+
 function createAndSaveRecipe() {
 	var recipe = {
 		name: "",
@@ -100,11 +103,11 @@ function createAndSaveRecipe() {
 	recipe.tags = parseTags();
 	console.log("recipe saved:");
 	console.log(recipe);
-	window.localStorage.setItem("retrieved recipe", JSON.stringify(recipe));
+	window.localStorage.setItem(recipe.name, JSON.stringify(recipe));
 }
 
-function retrieveRecipe() {
-	var retrievedRecipe = JSON.parse(window.localStorage.getItem("retrieved recipe"));
+function retrieveRecipe(name) {
+	var retrievedRecipe = JSON.parse(window.localStorage.getItem(name));
 	console.log("recipe retrieved:");
 	console.log(retrievedRecipe);
 	return retrievedRecipe;
@@ -128,10 +131,6 @@ function parseTags() {
 	return tagsArray;	
 }
 
-function saveRecipe() {
-	
-}
-
 function displayRecipe() {
 	var recipe = retrieveRecipe();
 	$('.displayName').html(recipe.name);
@@ -139,21 +138,17 @@ function displayRecipe() {
 	$('.displayActiveTime').html(recipe.activeTime);
 	$('.displayTotalTime').html(recipe.totalTime);
 	$('.displayCategory').html(recipe.category);
-	
 	var ul = $('<ul></ul>').appendTo('.listIngredients');
 	$(recipe.ingredients).each(function(index, item) {
 		var li = $('<li></li>').text(item);
 		li.appendTo(ul);
 	});
-	
 	var ul = $('<ol></ol>').appendTo('.listInstructions');
 	$(recipe.instructions).each(function(index, item) {
 		var li = $('<li></li>').text(item);
 		li.appendTo(ul);
 	});
-
 	$('.displayNotes').html(recipe.notes);
-	
 	var ul = $('<ul></ul>').appendTo('.listTags');
 	$(recipe.tags).each(function(index, item) {
 		var li = $('<li></li>').text(item);
@@ -174,7 +169,13 @@ function displayEditableRecipe() {
 	$('#recipeTags').val(recipe.tags.join(','));
 }
 
-
+function retrieveRecipeList() {
+	var recipeArray = [];
+	for (var i = 0; i < window.localStorage.length; i++) {
+		recipeArray.push(window.localStorage.key(i));
+	}
+	return recipeArray;
+}
 
 
 
