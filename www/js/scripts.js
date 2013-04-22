@@ -61,6 +61,16 @@ var app = {
 
 
 
+// $.mobile.changePage( "target-page.html", {      
+// 	transition: "slide", 
+// 	reverse: false, 
+// 	changeHash: false,
+// 	reloadPage: true      
+// });
+   
+   
+   
+   
 $(document).ready(function(){
 	displayRecipeGrid();
 });
