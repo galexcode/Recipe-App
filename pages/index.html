@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>page demo</title>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <!-- The script below can be omitted -->
+  <script src="/resources/turnOffPushState.js"></script>
+  <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+  <style type="text/css">
+    #header {
+      position: fixed;
+      z-index: 10;
+      height: 50px;
+      background: #00ff33;
+    }
+    #container {
+      position: relative;
+      top: 50px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <script>
+$.mobile.changePage( "target-page.html", {      
+       transition: "slide", 
+       reverse: false, 
+       changeHash: false,
+       reloadPage: true      
+   });
+
+  </script>
+</head>
+<body>
+
+	<div id="header" data-role="header" data-position="fixed" data-fullscreen="true"> <a href="#grid" data-transition="fade" data-direction="reverse">Grid</a> | <a href="#newRecipe" data-transition="fade">New Recipe</a> | <a href="#settings" data-transition="fade">Settings</a> </div>
+ 
+	<div id="container">
+		
+		<div id="grid" data-role="page">
+			<div data-role="header">
+				<h1>Recipes</h1>
+				<h2>Sort | Filter | Search</h2>
+			</div>
+			<div data-role="content">
+				<p>Recipes should go here.</p>
+				<a href="#newRecipe" data-transition="fade">Go to New Recipe</a>
+			</div>
+		</div>
+  
+		<div id="newRecipe" data-role="page">
+			<div data-role="header">
+				<h1>New Recipe</h1>
+			</div>
+			<div data-role="content">
+				<!-- <h2>This Is Page 2</h2> -->
+				<p>Text fields go here.</p>
+				<a href="#grid" data-transition="fade" data-direction="reverse">Go back to Grid</a>
+				<br>
+				<a href="#" data-rel="back">Or just go back</a>
+				<br>
+				<a href="#settings" data-transition="fade">Go to Settings</a>
+			</div>
+				<div data-role="footer">
+				<h1>Save button would go here.</h1>
+			</div>
+		</div>
+  
+		<div id="settings" data-role="page">
+			<div data-role="header">
+				<h1>Settings</h1>
+			</div>
+			<div data-role="content">
+				<!-- <h2>Settings</h2> -->
+				<p>Settings content goes here.</p>
+				<a href="#grid" data-transition="fade" data-direction="reverse">Go Home</a>
+				<br>
+				<a href="#" data-rel="back">Or just go back</a>
+			</div>
+		</div>
+		
+	</div>
+ 
+</body>
+</html>
