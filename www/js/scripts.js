@@ -141,24 +141,27 @@ function parseTags() {
 	return tagsArray;	
 }
 
-function displayRecipe() {
-	var recipe = retrieveRecipe();
+function displayRecipe(name) {
+	var recipe = retrieveRecipe(name);
 	$('.displayName').html(recipe.name);
 	$('.displayYield').html(recipe.yield);
 	$('.displayActiveTime').html(recipe.activeTime);
 	$('.displayTotalTime').html(recipe.totalTime);
 	$('.displayCategory').html(recipe.category);
+	$('.listIngredients').html('');  // first pass an empty string to clear the html
 	var ul = $('<ul></ul>').appendTo('.listIngredients');
 	$(recipe.ingredients).each(function(index, item) {
 		var li = $('<li></li>').text(item);
 		li.appendTo(ul);
 	});
+	$('.listInstructions').html('');  // first pass an empty string to clear the html
 	var ul = $('<ol></ol>').appendTo('.listInstructions');
 	$(recipe.instructions).each(function(index, item) {
 		var li = $('<li></li>').text(item);
 		li.appendTo(ul);
 	});
 	$('.displayNotes').html(recipe.notes);
+	$('.listTags').html('');  // first pass an empty string to clear the html
 	var ul = $('<ul></ul>').appendTo('.listTags');
 	$(recipe.tags).each(function(index, item) {
 		var li = $('<li></li>').text(item);
@@ -189,13 +192,18 @@ function retrieveRecipeList() {
 
 function displayRecipeGrid() {
 	var recipeArray = retrieveRecipeList();
-		var ul = $('<ul></ul>').appendTo('.recipeGrid');
-	$(recipeArray).each(function(index, item) {
-		var li = $('<li></li>').text(item);
+	var ul = $('<ul></ul>').appendTo('.recipeGrid');
+	$(recipeArray).each(function(index, name) {
+		var li = $('<li></li>');
 		li.appendTo(ul);
+		var a = $('<a href="#"></a>').text(name);
+		a.appendTo(li);
+		a.click(function(){
+			displayRecipe(name);
+		});
+		//console.log("made a for "+name);
 	});
 }
-
 
 
 
