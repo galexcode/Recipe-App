@@ -57,16 +57,6 @@ var app = {
 
 
 // app.initialize();
-
-
-
-
-// $.mobile.changePage( "target-page.html", {      
-// 	transition: "slide", 
-// 	reverse: false, 
-// 	changeHash: false,
-// 	reloadPage: true      
-// });
    
    
    
@@ -90,7 +80,7 @@ function camera(){
 
 function cameraSuccess(imageData){
 	console.log("saved photo");
-	document.getElementById('image').src = "data:image/jpeg;base64," + imageData;
+	document.getElementById('image').src = "data:image/jpeg;base64," + imageData;  //  id might need to be changed to class 'newCoverPhoto'
 }
 
 function cameraFailure(){
@@ -112,14 +102,14 @@ function createAndSaveRecipe() {
 		notes: [],
 		tags: [],
 	};
-	recipe.name = $('#recipeName').val();
-	recipe.yield = $('#recipeYield').val();
-	recipe.activeTime = $('#recipeActiveTime').val();
-	recipe.totalTime = $('#recipeTotalTime').val();
-	recipe.category = $('#recipeCategories').val();
+	recipe.name = $('.newName').val();
+	recipe.yield = $('.newYield').val();
+	recipe.activeTime = $('.newActiveTime').val();
+	recipe.totalTime = $('.newTotalTime').val();
+	recipe.category = $('.newCategory').val();
 	recipe.ingredients = parseIngredients();
 	recipe.instructions = parseInstructions();
-	recipe.notes = $('#recipeNotes').val();
+	recipe.notes = $('.newNotes').val();
 	recipe.tags = parseTags();
 	console.log("recipe saved:");
 	console.log(recipe);
@@ -134,19 +124,19 @@ function retrieveRecipe(name) {
 }
 
 function parseIngredients() {
-	var ingredientsString = $('#recipeIngredients').val();
+	var ingredientsString = $('.newIngredients').val();
 	var ingredientsArray = ingredientsString.split('\n').filter(Boolean);  //  \n = new line  // http://stackoverflow.com/questions/281264/remove-empty-elements-from-an-array-in-javascript
 	return ingredientsArray;	
 }
 
 function parseInstructions() {
-	var instructionsString = $('#recipeInstructions').val();
+	var instructionsString = $('.newInstructions').val();
 	var instructionsArray = instructionsString.split('\n').filter(Boolean);  //  \n = new line // http://stackoverflow.com/questions/281264/remove-empty-elements-from-an-array-in-javascript
 	return instructionsArray;	
 }
 
 function parseTags() {
-	var tagsString = $('#recipeTags').val();
+	var tagsString = $('.newTags').val();
 	var tagsArray = tagsString.split(',').filter(Boolean);
 	return tagsArray;	
 }
@@ -177,19 +167,25 @@ function displayRecipe(name) {
 		var li = $('<li></li>').text(item);
 		li.appendTo(ul);
 	});
+	$('.editButton').click(function(){
+		displayEditableRecipe(name);
+		$.mobile.changePage( "#editRecipe", {      
+			transition: "fade",    
+		});
+	});
 }
 
-function displayEditableRecipe() {
-	var recipe = retrieveRecipe();
-	$('#recipeName').val(recipe.name);
-	$('#recipeYield').val(recipe.yield);
-	$('#recipeActiveTime').val(recipe.activeTime);
-	$('#recipeTotalTime').val(recipe.totalTime);
-	$('#recipeCategory').val(recipe.category);
-	$('#recipeIngredients').val(recipe.ingredients.join('\n'));
-	$('#recipeInstructions').val(recipe.instructions.join('\n'));
-	$('#recipeNotes').val(recipe.notes);
-	$('#recipeTags').val(recipe.tags.join(','));
+function displayEditableRecipe(name) {
+	var recipe = retrieveRecipe(name);
+	$('.newName').val(recipe.name);
+	$('.newYield').val(recipe.yield);
+	$('.newActiveTime').val(recipe.activeTime);
+	$('.newTotalTime').val(recipe.totalTime);
+	$('.newCategory').val(recipe.category);
+	$('.newIngredients').val(recipe.ingredients.join('\n'));
+	$('.newInstructions').val(recipe.instructions.join('\n'));
+	$('.newNotes').val(recipe.notes);
+	$('.newTags').val(recipe.tags.join(','));
 }
 
 function retrieveRecipeList() {

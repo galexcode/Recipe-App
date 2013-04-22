@@ -34,23 +34,23 @@
 				</div>
 				<div data-role="content">
 					<button onclick="javascript:camera()"></button>
-					<img id="image">
-					<textarea id="recipeName" name="recipeName" rows="1" cols="32" placeholder="Recipe Name"></textarea>
-					<textarea id="recipeYield" name="recipeYield" rows="1" cols="32" placeholder="Yield"></textarea>
-					<textarea id="recipeActiveTime" name="recipeActiveTime" rows="1" cols="32" placeholder="Active Time"></textarea>
-					<textarea id="recipeTotalTime" name="recipeTotalTime" rows="1" cols="32" placeholder="Total Time"></textarea>
+					<img class="newCoverPhoto">
+					<textarea class="newName" name="name" rows="1" cols="32" placeholder="Recipe Name"></textarea>
+					<textarea class="newYield" name="yield" rows="1" cols="32" placeholder="Yield"></textarea>
+					<textarea class="newActiveTime" name="activeTime" rows="1" cols="32" placeholder="Active Time"></textarea>
+					<textarea class="newTotalTime" name="totalTime" rows="1" cols="32" placeholder="Total Time"></textarea>
 					<form action="">
-						<select name="recipeCategories" id="recipeCategories">
+						<select name="category" class="newCategory">
 							<option value="breakfast">Breakfast</option>
 							<option value="lunch">Lunch</option>
 							<option value="dinner" selected>Dinner</option>
 							<option value="dessert">Dessert</option>
 						</select>
 					</form>
-					<textarea id="recipeIngredients" name="recipeIngredients" rows="12" cols="32" placeholder="Ingredients"></textarea>
-					<textarea id="recipeInstructions" name="recipeInstructions" rows="12" cols="32" placeholder="Instructions"></textarea>
-					<textarea id="recipeNotes" name="recipeNotes" rows="6" cols="32" placeholder="Notes"></textarea>
-					<textarea id="recipeTags" name="recipeTags" rows="6" cols="32" placeholder="Tags"></textarea>
+					<textarea class="newIngredients" name="ingredients" rows="12" cols="32" placeholder="Ingredients"></textarea>
+					<textarea class="newInstructions" name="instructions" rows="12" cols="32" placeholder="Instructions"></textarea>
+					<textarea class="newNotes" name="notes" rows="6" cols="32" placeholder="Notes"></textarea>
+					<textarea class="newTags" name="tags" rows="6" cols="32" placeholder="Tags"></textarea>
 				</div>
 				<div data-role="footer">
 					<button class="button save" name="save" type="submit" onclick="javascript:createAndSaveRecipe()">Save</button>
@@ -76,7 +76,36 @@
 					<p class="displayNotes"></p>
 					<h4 class="titleTags">Tags</h4>
 					<p class="listTags"></p>
-					<button class="button edit" name="edit" onclick="javascript:displayEditableRecipe()">Edit</button>
+					<button class="button editButton" name="edit">Edit</button>
+				</div>
+			</div>
+			
+			<div id="editRecipe" data-role="page">
+				<div data-role="header">
+					<h1>Edit Recipe</h1>
+				</div>
+				<div data-role="content">
+					<button onclick="javascript:camera()"></button>
+					<img class="newCoverPhoto">
+					<textarea class="newName" name="name" rows="1" cols="32" placeholder="Recipe Name"></textarea>
+					<textarea class="newYield" name="yield" rows="1" cols="32" placeholder="Yield"></textarea>
+					<textarea class="newActiveTime" name="activeTime" rows="1" cols="32" placeholder="Active Time"></textarea>
+					<textarea class="newTotalTime" name="totalTime" rows="1" cols="32" placeholder="Total Time"></textarea>
+					<form action="">
+						<select name="category" class="newCategory">
+							<option value="breakfast">Breakfast</option>
+							<option value="lunch">Lunch</option>
+							<option value="dinner" selected>Dinner</option>
+							<option value="dessert">Dessert</option>
+						</select>
+					</form>
+					<textarea class="newIngredients" name="ingredients" rows="12" cols="32" placeholder="Ingredients"></textarea>
+					<textarea class="newInstructions" name="instructions" rows="12" cols="32" placeholder="Instructions"></textarea>
+					<textarea class="newNotes" name="notes" rows="6" cols="32" placeholder="Notes"></textarea>
+					<textarea class="newTags" name="tags" rows="6" cols="32" placeholder="Tags"></textarea>
+				</div>
+				<div data-role="footer">
+					<button class="button save" name="save" type="submit" onclick="javascript:createAndSaveRecipe()">Save</button>
 				</div>
 			</div>
 			
