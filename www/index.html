@@ -12,50 +12,84 @@
     </head>
     
     <body>
+    	<div id="header" data-role="header" data-position="fixed" data-fullscreen="true"> <a href="#grid" data-transition="fade" data-direction="reverse">Grid</a> | <a href="#createRecipe" data-transition="fade">Create Recipe</a> | <a href="#settings" data-transition="fade">Settings</a> | <a href="#" data-rel="back">Back</a></div>
     	
-    	<div id="content">
-    		<div class="recipeGrid">
-    			
-    		</div>
-    		<div class="createRecipe">
-				<button onclick="javascript:camera()"></button>
-				<img id="image">
-				
-				<textarea id="recipeName" name="recipeName" rows="1" cols="32" placeholder="Recipe Name"></textarea>
-				<textarea id="recipeYield" name="recipeYield" rows="1" cols="32" placeholder="Yield"></textarea>
-				<textarea id="recipeActiveTime" name="recipeActiveTime" rows="1" cols="32" placeholder="Active Time"></textarea>
-				<textarea id="recipeTotalTime" name="recipeTotalTime" rows="1" cols="32" placeholder="Total Time"></textarea>
-				<form action="">
-					<select name="recipeCategories" id="recipeCategories">
-						<option value="breakfast">Breakfast</option>
-						<option value="lunch">Lunch</option>
-						<option value="dinner" selected>Dinner</option>
-						<option value="dessert">Dessert</option>
-					</select>
-				</form>
-				<textarea id="recipeIngredients" name="recipeIngredients" rows="12" cols="32" placeholder="Ingredients"></textarea>
-				<textarea id="recipeInstructions" name="recipeInstructions" rows="12" cols="32" placeholder="Instructions"></textarea>
-				<textarea id="recipeNotes" name="recipeNotes" rows="6" cols="32" placeholder="Notes"></textarea>
-				<textarea id="recipeTags" name="recipeTags" rows="6" cols="32" placeholder="Tags"></textarea>
-				<button class="button save" name="save" type="submit" onclick="javascript:createAndSaveRecipe()">Save</button>
+    	<div id="container">
+    	
+    		<div id="grid" data-role="page">
+				<div data-role="header">
+					<h1>Recipes</h1>
+					<h2>Sort | Filter | Search</h2>
+				</div>
+				<div data-role="content">
+					<div class="recipeGrid">
+						<p>Recipes should go here. We have to integrate the viewRecipe page.</p>
+					</div>
+				</div>
 			</div>
+
+			<div id="createRecipe" data-role="page">
+				<div data-role="header">
+					<h1>Create Recipe</h1>
+				</div>
+				<div data-role="content">
+					<button onclick="javascript:camera()"></button>
+					<img id="image">
+					<textarea id="recipeName" name="recipeName" rows="1" cols="32" placeholder="Recipe Name"></textarea>
+					<textarea id="recipeYield" name="recipeYield" rows="1" cols="32" placeholder="Yield"></textarea>
+					<textarea id="recipeActiveTime" name="recipeActiveTime" rows="1" cols="32" placeholder="Active Time"></textarea>
+					<textarea id="recipeTotalTime" name="recipeTotalTime" rows="1" cols="32" placeholder="Total Time"></textarea>
+					<form action="">
+						<select name="recipeCategories" id="recipeCategories">
+							<option value="breakfast">Breakfast</option>
+							<option value="lunch">Lunch</option>
+							<option value="dinner" selected>Dinner</option>
+							<option value="dessert">Dessert</option>
+						</select>
+					</form>
+					<textarea id="recipeIngredients" name="recipeIngredients" rows="12" cols="32" placeholder="Ingredients"></textarea>
+					<textarea id="recipeInstructions" name="recipeInstructions" rows="12" cols="32" placeholder="Instructions"></textarea>
+					<textarea id="recipeNotes" name="recipeNotes" rows="6" cols="32" placeholder="Notes"></textarea>
+					<textarea id="recipeTags" name="recipeTags" rows="6" cols="32" placeholder="Tags"></textarea>
+				</div>
+				<div data-role="footer">
+					<button class="button save" name="save" type="submit" onclick="javascript:createAndSaveRecipe()">Save</button>
+				</div>
+			</div>
+			
+			<!--
 			<button class="button displayRecipe" name="displayRecipe" type="submit" onclick="javascript:displayRecipe()">Display Recipe</button>
-			<div class="viewRecipe">
-				<h2 class="displayName"></h2>
-				<img class="displayPhoto"/>
-				<h3 class="displayYield"></h3>
-				<h3 class="displayActiveTime"></h3>
-				<h3 class="displayTotalTime"></h3>
-				<h3 class="displayCategory"></h3>
-				<h4 class="titleIngredients">Ingredients</h4>
-				<p class="listIngredients"></p>
-				<h4 class="titleInstructions">Instructions</h4>
-				<p class="listInstructions"></p>
-				<p class="displayNotes"></p>
-				<h4 class="titleTags">Tags</h4>
-				<p class="listTags"></p>
-				<button class="button edit" name="edit" onclick="javascript:displayEditableRecipe()">Edit</button>
+			-->
+
+			<div id="cookbook" data-role="page">			
+				<div class="viewRecipe">
+					<h2 class="displayName"></h2>
+					<img class="displayPhoto"/>
+					<h3 class="displayYield"></h3>
+					<h3 class="displayActiveTime"></h3>
+					<h3 class="displayTotalTime"></h3>
+					<h3 class="displayCategory"></h3>
+					<h4 class="titleIngredients">Ingredients</h4>
+					<p class="listIngredients"></p>
+					<h4 class="titleInstructions">Instructions</h4>
+					<p class="listInstructions"></p>
+					<p class="displayNotes"></p>
+					<h4 class="titleTags">Tags</h4>
+					<p class="listTags"></p>
+					<button class="button edit" name="edit" onclick="javascript:displayEditableRecipe()">Edit</button>
+				</div>
 			</div>
+			
+			<div id="settings" data-role="page">
+				<div data-role="header">
+					<h1>Settings</h1>
+				</div>
+				<div data-role="content">
+					<!-- <h2>Settings</h2> -->
+					<p>Settings content goes here.</p>
+				</div>
+			</div>
+			
         </div>
     	
    <!-- <div class="app">

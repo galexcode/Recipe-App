@@ -206,7 +206,7 @@ function displayRecipeGrid() {
 	$(recipeArray).each(function(index, name) {
 		var li = $('<li></li>');
 		li.appendTo(ul);
-		var a = $('<a href="#"></a>').text(name);
+		var a = $('<a href="#cookbook"></a>').text(name);
 		a.appendTo(li);
 		a.click(function(){
 			displayRecipe(name);
