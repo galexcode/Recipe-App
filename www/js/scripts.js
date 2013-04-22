@@ -90,7 +90,11 @@ function cameraFailure(){
 
 
 
-function createAndSaveRecipe() {
+function clearRecipeContents() {
+	$('#createRecipe textarea').html('');  // first pass an empty string to clear the html
+}
+
+function createAndSaveRecipe(parentDiv) {
 	var recipe = {
 		name: "",
 		yield: "",
@@ -102,15 +106,15 @@ function createAndSaveRecipe() {
 		notes: [],
 		tags: [],
 	};
-	recipe.name = $('.newName').val();
-	recipe.yield = $('.newYield').val();
-	recipe.activeTime = $('.newActiveTime').val();
-	recipe.totalTime = $('.newTotalTime').val();
-	recipe.category = $('.newCategory').val();
-	recipe.ingredients = parseIngredients();
-	recipe.instructions = parseInstructions();
-	recipe.notes = $('.newNotes').val();
-	recipe.tags = parseTags();
+	recipe.name = $(parentDiv + ' .newName').val();
+	recipe.yield = $(parentDiv + ' .newYield').val();
+	recipe.activeTime = $(parentDiv + ' .newActiveTime').val();
+	recipe.totalTime = $(parentDiv + ' .newTotalTime').val();
+	recipe.category = $(parentDiv + ' .newCategory').val();
+	recipe.ingredients = parseIngredients(parentDiv);
+	recipe.instructions = parseInstructions(parentDiv);
+	recipe.notes = $(parentDiv + ' .newNotes').val();
+	recipe.tags = parseTags(parentDiv);
 	console.log("recipe saved:");
 	console.log(recipe);
 	window.localStorage.setItem(recipe.name, JSON.stringify(recipe));
@@ -123,20 +127,20 @@ function retrieveRecipe(name) {
 	return retrievedRecipe;
 }
 
-function parseIngredients() {
-	var ingredientsString = $('.newIngredients').val();
+function parseIngredients(parentDiv) {
+	var ingredientsString = $(parentDiv + ' .newIngredients').val();
 	var ingredientsArray = ingredientsString.split('\n').filter(Boolean);  //  \n = new line  // http://stackoverflow.com/questions/281264/remove-empty-elements-from-an-array-in-javascript
 	return ingredientsArray;	
 }
 
-function parseInstructions() {
-	var instructionsString = $('.newInstructions').val();
+function parseInstructions(parentDiv) {
+	var instructionsString = $(parentDiv + ' .newInstructions').val();
 	var instructionsArray = instructionsString.split('\n').filter(Boolean);  //  \n = new line // http://stackoverflow.com/questions/281264/remove-empty-elements-from-an-array-in-javascript
 	return instructionsArray;	
 }
 
-function parseTags() {
-	var tagsString = $('.newTags').val();
+function parseTags(parentDiv) {
+	var tagsString = $(parentDiv + ' .newTags').val();
 	var tagsArray = tagsString.split(',').filter(Boolean);
 	return tagsArray;	
 }
