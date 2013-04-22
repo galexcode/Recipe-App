@@ -58,6 +58,16 @@ var app = {
 
 // app.initialize();
 
+
+
+
+$(document).ready(function(){
+	displayRecipeGrid();
+});
+
+
+
+
 function camera(){
 	var settings = {
 		quality: 100,
@@ -177,7 +187,14 @@ function retrieveRecipeList() {
 	return recipeArray;
 }
 
-
+function displayRecipeGrid() {
+	var recipeArray = retrieveRecipeList();
+		var ul = $('<ul></ul>').appendTo('.recipeGrid');
+	$(recipeArray).each(function(index, item) {
+		var li = $('<li></li>').text(item);
+		li.appendTo(ul);
+	});
+}
 
 
 
