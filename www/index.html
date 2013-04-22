@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+    	
+    	<div id="content">
+    		<div class="createRecipe">
+				<button onclick="javascript:camera()"></button>
+				<img id="image">
+				
+				<textarea id="recipeName" name="recipeName" rows="1" cols="32" placeholder="Recipe Name"></textarea>
+				<textarea id="recipeYield" name="recipeYield" rows="1" cols="32" placeholder="Yield"></textarea>
+				<textarea id="recipeActiveTime" name="recipeActiveTime" rows="1" cols="32" placeholder="Active Time"></textarea>
+				<textarea id="recipeTotalTime" name="recipeTotalTime" rows="1" cols="32" placeholder="Total Time"></textarea>
+				<form action="">
+					<select name="recipeCategories" id="recipeCategories">
+						<option value="breakfast">Breakfast</option>
+						<option value="lunch">Lunch</option>
+						<option value="dinner" selected>Dinner</option>
+						<option value="dessert">Dessert</option>
+					</select>
+				</form>
+				<textarea id="recipeIngredients" name="recipeIngredients" rows="12" cols="32" placeholder="Ingredients"></textarea>
+				<textarea id="recipeInstructions" name="recipeInstructions" rows="12" cols="32" placeholder="Instructions"></textarea>
+				<textarea id="recipeNotes" name="recipeNotes" rows="6" cols="32" placeholder="Notes"></textarea>
+				<textarea id="recipeTags" name="recipeTags" rows="6" cols="32" placeholder="Tags"></textarea>
+				<button class="button save" name="save" type="submit" onclick="javascript:createAndSaveRecipe()">Save</button>
+			</div>
+			<button class="button displayRecipe" name="displayRecipe" type="submit" onclick="javascript:displayRecipe()">Display Recipe</button>
+			<div class="viewRecipe">
+				<h2 class="displayName"></h2>
+				<img class="displayPhoto"/>
+				<h3 class="displayYield"></h3>
+				<h3 class="displayActiveTime"></h3>
+				<h3 class="displayTotalTime"></h3>
+				<h3 class="displayCategory"></h3>
+				<h4 class="titleIngredients">Ingredients</h4>
+				<p class="listIngredients"></p>
+				<h4 class="titleInstructions">Instructions</h4>
+				<p class="listInstructions"></p>
+				<p class="displayNotes"></p>
+				<h4 class="titleTags">Tags</h4>
+				<p class="listTags"></p>
+				<button class="button edit" name="edit">Edit</button>
+			</div>
+        </div>
+    	
+   <!-- <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div> -->
+        
+        <script src="js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="cordova-2.5.0.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
+    </body>
+</html>
