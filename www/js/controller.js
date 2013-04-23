@@ -70,11 +70,15 @@ function cameraFailure(){
 
 function actionSaveRecipe(parentDiv) {
 	var recipe = createOrEditRecipe(parentDiv);
-	saveRecipe(recipe);
-	displayRecipe(recipe);
-	$.mobile.changePage( "#cookbook", {      
-		transition: "fade",    
-	});
+	if (recipe.name.trim() == '') {
+		alert("Your recipe needs a name!");
+	} else {
+		saveRecipe(recipe);
+		displayRecipe(recipe);
+		$.mobile.changePage( "#cookbook", {      
+			transition: "fade",    
+		});
+	}
 }
 
 function actionDisplayRecipe(name) {
