@@ -77,7 +77,7 @@ function actionSaveRecipe(parentDiv, oldRecipe) {
 		saveRecipe(recipe);
 		displayRecipe(recipe);
 		displayRecipeGrid();
-		$.mobile.changePage( "#cookbook", {      
+		$.mobile.changePage("#cookbook", {      
 			transition: "fade",    
 		});
 	}
@@ -98,6 +98,12 @@ function actionEditRecipe(recipe) {
 	});
 }
 
-
+function actionDeleteRecipe(parentDiv, oldRecipe) {
+	deleteRecipe(oldRecipe);
+	displayRecipeGrid();
+	$.mobile.changePage( "#grid", {      
+		transition: "fade",    
+	});
+}
 
 

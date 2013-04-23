@@ -89,6 +89,9 @@ function displayEditableRecipe(recipe) {
 	$('#editRecipe .saveButton').unbind('click').click(function(){
 		actionSaveRecipe('#editRecipe', recipe);
 	});
+	$('#editRecipe .deleteButton').unbind('click').click(function(){
+		actionDeleteRecipe('#editRecipe', recipe);
+	});
 }
 
 function displayRecipeGrid() {
