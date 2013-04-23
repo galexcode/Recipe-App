@@ -68,11 +68,12 @@ function cameraFailure(){
 
 
 
-function actionSaveRecipe(parentDiv) {
+function actionSaveRecipe(parentDiv, oldRecipe) {
 	var recipe = createOrEditRecipe(parentDiv);
 	if (recipe.name.trim() == '') {
 		alert("Your recipe needs a name!");
 	} else {
+		deleteRecipe(oldRecipe);
 		saveRecipe(recipe);
 		displayRecipe(recipe);
 		displayRecipeGrid();

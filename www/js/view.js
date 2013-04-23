@@ -86,6 +86,9 @@ function displayEditableRecipe(recipe) {
 	$('#editRecipe .newInstructions').val(recipe.instructions.join('\n'));
 	$('#editRecipe .newNotes').val(recipe.notes);
 	$('#editRecipe .newTags').val(recipe.tags.join(','));
+	$('#editRecipe .saveButton').unbind('click').click(function(){
+		actionSaveRecipe('#editRecipe', recipe);
+	});
 }
 
 function displayRecipeGrid() {

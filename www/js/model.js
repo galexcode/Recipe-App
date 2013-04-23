@@ -16,3 +16,8 @@ function retrieveRecipeList() {
 	}
 	return recipeArray;
 }
+
+function deleteRecipe(recipe) {
+	var name = recipe.name;
+	localStorage.removeItem(name);
+}
