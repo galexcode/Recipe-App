@@ -89,6 +89,7 @@ function displayEditableRecipe(recipe) {
 }
 
 function displayRecipeGrid() {
+	$('.recipeGrid').html('');  // first pass an empty string to clear the html
 	var recipeArray = retrieveRecipeList();
 	var ul = $('<ul></ul>').appendTo('.recipeGrid');
 	$(recipeArray).each(function(index, name) {

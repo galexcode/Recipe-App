@@ -75,6 +75,7 @@ function actionSaveRecipe(parentDiv) {
 	} else {
 		saveRecipe(recipe);
 		displayRecipe(recipe);
+		displayRecipeGrid();
 		$.mobile.changePage( "#cookbook", {      
 			transition: "fade",    
 		});
