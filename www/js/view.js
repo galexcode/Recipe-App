@@ -71,7 +71,7 @@ function displayRecipe(recipe) {
 		var li = $('<li></li>').text(item);
 		li.appendTo(ul);
 	});
-	$('.editButton').click(function(){
+	$('.editButton').unbind('click').click(function(){  //  .unbind('click') removes any previous click events attached
 		actionEditRecipe(recipe);
 	});
 }
@@ -96,7 +96,7 @@ function displayRecipeGrid() {
 		li.appendTo(ul);
 		var a = $('<a href="#"></a>').text(name);
 		a.appendTo(li);
-		a.click(function(){
+		a.unbind('click').click(function(){  //  .unbind('click') removes any previous click events attached
 			actionDisplayRecipe(name);
 		});
 		//console.log("made a for "+name);
