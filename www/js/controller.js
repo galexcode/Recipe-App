@@ -64,3 +64,34 @@ function cameraSuccess(imageData){
 function cameraFailure(){
 	alert("Error");
 }
+
+
+
+
+function actionSaveRecipe(parentDiv) {
+	var recipe = createOrEditRecipe(parentDiv);
+	saveRecipe(recipe);
+	displayRecipe(recipe);
+	$.mobile.changePage( "#cookbook", {      
+		transition: "fade",    
+	});
+}
+
+function actionDisplayRecipe(name) {
+	var recipe = retrieveRecipe(name);
+	displayRecipe(recipe);
+	$.mobile.changePage( "#cookbook", {      
+		transition: "fade",    
+	});
+}
+
+function actionEditRecipe(recipe) {
+	displayEditableRecipe(recipe);
+	$.mobile.changePage( "#editRecipe", {      
+		transition: "fade",    
+	});
+}
+
+
+
+

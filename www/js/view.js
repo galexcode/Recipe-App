@@ -25,7 +25,7 @@ function createOrEditRecipe(parentDiv) {
 	recipe.tags = parseTags(parentDiv);
 	console.log("recipe saved:");
 	console.log(recipe);
-	saveRecipe(recipe);
+	return recipe;
 }
 
 function parseIngredients(parentDiv) {
@@ -46,8 +46,7 @@ function parseTags(parentDiv) {
 	return tagsArray;	
 }
 
-function displayRecipe(name) {
-	var recipe = retrieveRecipe(name);
+function displayRecipe(recipe) {
 	$('.displayName').html(recipe.name);
 	$('.displayYield').html(recipe.yield);
 	$('.displayActiveTime').html(recipe.activeTime);
@@ -73,24 +72,20 @@ function displayRecipe(name) {
 		li.appendTo(ul);
 	});
 	$('.editButton').click(function(){
-		displayEditableRecipe(name);
-		$.mobile.changePage( "#editRecipe", {      
-			transition: "fade",    
-		});
+		actionEditRecipe(recipe);
 	});
 }
 
-function displayEditableRecipe(name) {
-	var recipe = retrieveRecipe(name);
-	$('.newName').val(recipe.name);
-	$('.newYield').val(recipe.yield);
-	$('.newActiveTime').val(recipe.activeTime);
-	$('.newTotalTime').val(recipe.totalTime);
-	$('.newCategory').val(recipe.category);
-	$('.newIngredients').val(recipe.ingredients.join('\n'));
-	$('.newInstructions').val(recipe.instructions.join('\n'));
-	$('.newNotes').val(recipe.notes);
-	$('.newTags').val(recipe.tags.join(','));
+function displayEditableRecipe(recipe) {
+	$('#editRecipe .newName').val(recipe.name);
+	$('#editRecipe .newYield').val(recipe.yield);
+	$('#editRecipe .newActiveTime').val(recipe.activeTime);
+	$('#editRecipe .newTotalTime').val(recipe.totalTime);
+	$('#editRecipe .newCategory').val(recipe.category);
+	$('#editRecipe .newIngredients').val(recipe.ingredients.join('\n'));
+	$('#editRecipe .newInstructions').val(recipe.instructions.join('\n'));
+	$('#editRecipe .newNotes').val(recipe.notes);
+	$('#editRecipe .newTags').val(recipe.tags.join(','));
 }
 
 function displayRecipeGrid() {
@@ -99,30 +94,11 @@ function displayRecipeGrid() {
 	$(recipeArray).each(function(index, name) {
 		var li = $('<li></li>');
 		li.appendTo(ul);
-		var a = $('<a href="#cookbook"></a>').text(name);
+		var a = $('<a href="#"></a>').text(name);
 		a.appendTo(li);
 		a.click(function(){
-			displayRecipe(name);
+			actionDisplayRecipe(name);
 		});
 		//console.log("made a for "+name);
 	});
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
