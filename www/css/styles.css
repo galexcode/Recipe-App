@@ -70,12 +70,41 @@ body {
 }
 
 h1 {
-    font-size:24px;
-    font-weight:normal;
-    margin:0px;
-    overflow:visible;
-    padding:0px;
-    text-align:center;
+    font-family: 'Nixie One', cursive;
+    font-weight: 400;
+    font-size: 60px;
+    text-align: center;
+    color: #000000;
+    letter-spacing: 1px;
+    margin: 0px;
+    padding-top: 18px;
+    overflow: visible;
+}
+
+h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    margin: 0px;
+    overflow: visible;
+    padding-top: 12px;
+    text-align: center;
+    color: #000000;
+    text-transform: lowercase;
+}
+
+.dotDivider {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.recipeGrid li {
+	width: 160px;
+	height: 160px;
+	background-image: url("../img/cover_photos/arugula.png");
+	float: left;
+	margin: 0 16px 16px 0;
+	list-style-type: none;
 }
 
 .event {
