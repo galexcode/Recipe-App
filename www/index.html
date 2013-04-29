@@ -12,14 +12,19 @@
     </head>
     
     <body>
-    	<div id="header" data-role="header" data-position="fixed" data-fullscreen="true"> <a href="#grid" data-transition="fade">Grid</a> | <a href="#createRecipe" data-transition="fade">Create Recipe</a> | <a href="#settings" data-transition="fade">Settings</a> | <a href="#" data-rel="back">Back</a></div>
+    	<div id="header" data-role="header" data-position="fixed" data-fullscreen="true"> 
+    		<a href="#grid" data-transition="fade"><img src="img/icons/icon_grid_2X.png" width="80" height="80"/></a>
+    		<a href="#createRecipe" data-transition="fade"><img src="img/icons/icon_add_2X.png" width="80" height="80"/></a>
+    		<a href="#settings" data-transition="fade"><img src="img/icons/icon_settings_2X.png" width="80" height="80"/></a>
+    		<a href="#" data-rel="back">Back</a>
+    	</div>
     	
     	<div id="container">
     	
     		<div id="grid" data-role="page">
 				<div data-role="header">
 					<h1>Recipes</h1>
-					<h2>Sort | Filter | Search</h2>
+					<h2><a href="#" onclick="javascript:actionSortRecipesByName()">Sort</a> | Filter | Search</h2>
 				</div>
 				<div data-role="content">
 					<div class="recipeGrid">

@@ -40,7 +40,7 @@ var app = {
    
    
 $(document).ready(function(){
-	displayRecipeGrid();
+	refreshRecipeGrid();
 });
 
 
@@ -76,7 +76,7 @@ function actionSaveRecipe(parentDiv, oldRecipe) {
 		deleteRecipe(oldRecipe);
 		saveRecipe(recipe);
 		displayRecipe(recipe);
-		displayRecipeGrid();
+		refreshRecipeGrid();
 		$.mobile.changePage("#cookbook", {      
 			transition: "fade",    
 		});
@@ -100,10 +100,18 @@ function actionEditRecipe(recipe) {
 
 function actionDeleteRecipe(parentDiv, oldRecipe) {
 	deleteRecipe(oldRecipe);
-	displayRecipeGrid();
+	refreshRecipeGrid();
 	$.mobile.changePage( "#grid", {      
 		transition: "fade",    
 	});
 }
 
+function refreshRecipeGrid() {
+	var recipeArray = retrieveRecipeList();
+	displayRecipeGrid(recipeArray);
+}
 
+function actionSortRecipesByName() {
+	var recipeArray = retrieveRecipeListSortedByName();
+	displayRecipeGrid(recipeArray);
+}

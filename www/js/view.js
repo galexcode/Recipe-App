@@ -94,9 +94,8 @@ function displayEditableRecipe(recipe) {
 	});
 }
 
-function displayRecipeGrid() {
+function displayRecipeGrid(recipeArray) {
 	$('.recipeGrid').html('');  // first pass an empty string to clear the html
-	var recipeArray = retrieveRecipeList();
 	var ul = $('<ul></ul>').appendTo('.recipeGrid');
 	$(recipeArray).each(function(index, name) {
 		var li = $('<li></li>');
