@@ -1,3 +1,9 @@
+function setupNavigationBar() {
+	$(".iconNav").click(function () {
+      $(this).toggleClass("rotated");
+    });
+}
+
 function clearRecipeContents() {
 	$('#createRecipe textarea').html('');  // first pass an empty string to clear the html
 }

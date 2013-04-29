@@ -41,6 +41,7 @@ var app = {
    
 $(document).ready(function(){
 	refreshRecipeGrid();
+	setupNavigationBar();
 });
 
 
@@ -73,7 +74,9 @@ function actionSaveRecipe(parentDiv, oldRecipe) {
 	if (recipe.name.trim() == '') {
 		alert("Your recipe needs a name!");
 	} else {
-		deleteRecipe(oldRecipe);
+		if (oldRecipe) {
+			deleteRecipe(oldRecipe);
+		}
 		saveRecipe(recipe);
 		displayRecipe(recipe);
 		refreshRecipeGrid();

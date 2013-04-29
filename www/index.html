@@ -14,10 +14,13 @@
     
     <body>
     	<div id="header" data-role="header" data-position="fixed" data-fullscreen="true"> 
-    		<a href="#grid" data-transition="fade"><img src="img/icons/icon_grid_2X.png" width="80" height="80"/></a>
-    		<a href="#createRecipe" data-transition="fade"><img src="img/icons/icon_add_2X.png" width="80" height="80"/></a>
-    		<a href="#settings" data-transition="fade"><img src="img/icons/icon_settings_2X.png" width="80" height="80"/></a>
-    		<!-- <a href="#" data-rel="back">Back</a> -->
+    		<img class="iconNav" src="img/icons/icon_nav_expanded_2X.png" width="80" height="80"/>
+    		<div class="navigationLinks">
+				<a href="#grid" data-transition="fade"><img src="img/icons/icon_grid_2X.png" width="80" height="80"/></a>
+				<a href="#createRecipe" data-transition="fade"><img src="img/icons/icon_add_2X.png" width="80" height="80"/></a>
+				<a href="#settings" data-transition="fade"><img src="img/icons/icon_settings_2X.png" width="80" height="80"/></a>
+				<!-- <a href="#" data-rel="back">Back</a> -->
+			</div>
     	</div>
     	
     	<div id="container">
@@ -33,7 +36,7 @@
 						Search
 					</h2>
 				</div>
-				<div data-role="content">
+				<div class="content">
 					<div class="recipeGrid">
 						<p>Recipes should go here. We have to integrate the viewRecipe page.</p>
 					</div>
