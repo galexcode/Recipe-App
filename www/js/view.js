@@ -1,8 +1,10 @@
 function setupNavigationBar() {
 	$(".iconNav").click(function () {
       $(this).toggleClass("rotated");
-      $(".navigationLinks").fadeToggle();
-      $(".navigationLinksBackground").fadeToggle();
+      $(".navigationLinks").toggleClass("navigationLinksCollapsed");
+      $(".navigationLinksBackground").toggleClass("navigationLinksBackgroundCollapsed");
+//       $(".navigationLinks").fadeToggle();
+//       $(".navigationLinksBackground").fadeToggle();
     });
 }
 

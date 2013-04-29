@@ -161,6 +161,19 @@ h2 {
 	height: 100%;
 	background: rgba(0,0,0,0.1);
 	z-index: -10;
+	-moz-transition: margin 0.5s, opacity 0.5s;
+    -webkit-transition: margin 0.5s, opacity 0.5s;
+    -o-transition: margin 0.5s, opacity 0.5s;
+    transition: margin 0.5s, opacity 0.5s;
+    opacity: 1;
+}
+
+.navigationLinks {
+	-moz-transition: margin 0.5s, opacity 0.5s;
+    -webkit-transition: margin 0.5s, opacity 0.5s;
+    -o-transition: margin 0.5s, opacity 0.5s;
+    transition: margin 0.5s, opacity 0.5s;
+    opacity: 1;
 }
 
 .iconNavWrapper {
@@ -186,6 +199,16 @@ h2 {
   -webkit-transform: rotate(90deg); /* Safari and Chrome */
   -o-transform: rotate(90deg); /* Opera */
   background-color: rgba(0,0,0,0.1);
+}
+
+.navigationLinksCollapsed {
+	margin-top: -320px;
+	opacity: 0;
+}
+
+.navigationLinksBackgroundCollapsed {
+	margin-top: -768px;
+	opacity: 0;
 }
 
 #container {
