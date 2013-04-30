@@ -28,6 +28,7 @@ function createOrEditRecipe(parentDiv) {
 		tags: [],
 		coverphoto: "",
 		photos: [],
+		photoLinks: [],
 	};
 	recipe.name = $(parentDiv + ' .newName').val();
 	recipe.yield = $(parentDiv + ' .newYield').val();
@@ -39,6 +40,8 @@ function createOrEditRecipe(parentDiv) {
 	recipe.notes = $(parentDiv + ' .newNotes').val();
 	recipe.tags = parseTags(parentDiv);
 	recipe.coverphoto = parseCoverPhoto(parentDiv);
+	recipe.photoLinks = parsePhotoLinks(parentDiv);
+	recipe.photos = parseLinkedPhotos(parentDiv);
 	console.log("recipe saved:");
 	console.log(recipe);
 	return recipe;
@@ -64,6 +67,24 @@ function parseTags(parentDiv) {
 
 function parseCoverPhoto(parentDiv) {
 	return $(parentDiv+" .addCoverPhoto").css("background-image");
+}
+
+function parsePhotoLinks(parentDiv) {
+	 var ingredientsString = $(parentDiv + ' .newIngredients').val();
+	 var instructionsString = $(parentDiv + ' .newInstructions').val();
+	 var links = (ingredientsString + instructionsString).match(/[^[\]]+(?=])/g);
+	 return links;
+}
+
+function parseLinkedPhotos(parentDiv) {
+	 var linkedPhotos = [];
+	 $(parentDiv+" .addPhotosHolder .linkedPhotoThumb").each(function() {
+	 	var photoObject = { photo:"", link:"" };
+	 	photoObject.photo = $(this).css("background-image");
+	 	photoObject.link = $(this).data("link");
+	 	linkedPhotos.push(photoObject);
+	 });
+	 return linkedPhotos;
 }
 
 function displayRecipe(recipe) {
@@ -115,6 +136,13 @@ function displayEditableRecipe(recipe) {
 	$('#editRecipe .newTags').val(recipe.tags.join(','));
 	$("#editRecipe .addCoverPhoto").css("background-image", recipe.coverphoto);
 
+	$("#editRecipe .addPhotosHolder").html('');
+	for (var i=0; i<recipe.photos.length; i++) {
+		var item = recipe.photos[i];
+		var newImage = $("<div data-link='"+item.link+"' class='linkedPhotoThumb'></div>").css("background-image", item.photo);
+		$("#editRecipe .addPhotosHolder").append(newImage);
+	}
+
 	$('#editRecipe .saveButton').unbind('click').click(function(){
 		actionSaveRecipe('#editRecipe', recipe);
 	});
@@ -122,31 +150,64 @@ function displayEditableRecipe(recipe) {
 		actionDeleteRecipe('#editRecipe', recipe);
 	});
 	$('#editRecipe .addCoverPhoto').unbind('click').click(function(){
-		showCoverPhotoPicker("#editRecipe", recipe);
+		showCoverPhotoPicker("#editRecipe", recipe, true, "");
 	});
+	$('#editRecipe .addPhotos').unbind('click').click(function(){
+		showPhotoLinkPopup("#editRecipe", createOrEditRecipe("#editRecipe"));
+	});
+
 }
 
-function showCoverPhotoPicker(parentDiv, recipe) {
+function showCoverPhotoPicker(parentDiv, recipe, isCoverPhoto, photoLink) {
 	$(parentDiv+" .bigPopupBackground").fadeIn().unbind('click').click(function() {
 		$(this).fadeOut();
 	});
+	
+	function doThisOnSuccess(imagePath) {
+		console.log("Photo was a success. setting as background image: "+imagePath);
+		if (isCoverPhoto == true) {
+			$(parentDiv+" .addCoverPhoto").css("background-image", "url('"+imagePath+"')");
+		} else {
+			var newImage = $("<div data-link='"+photoLink+"' class='linkedPhotoThumb'></div>").css("background-image", "url('"+imagePath+"')");
+			$(parentDiv+" .addPhotosHolder").append(newImage);
+		}
+	};
+	
 	$(parentDiv+" .bigPopupBackground .optionOne").unbind('click').click(function() {
 		actionTakeCoverPhoto(recipe, function(imagePath) {
-			//$(".bigPopupBackground").fadeOut();
-			console.log("Photo was a success. setting as background image");
-			$(parentDiv+" .addCoverPhoto").css("background-image", "url("+imagePath+")");
+			doThisOnSuccess(imagePath);
 		});
 		//return false;
 	});
 	$(parentDiv+" .bigPopupBackground .optionTwo").unbind('click').click(function() {
 		actionPickCoverPhoto(recipe, function(imagePath) {
-			//$(".bigPopupBackground").fadeOut();
-			console.log("Photo was a success. setting as background image");
-			$(parentDiv+" .addCoverPhoto").css("background-image", "url("+imagePath+")");
+			doThisOnSuccess(imagePath);
 		});
 		//return false;
 	});
 }
+
+function showPhotoLinkPopup(parentDiv, recipe) {
+	$(parentDiv+" .photoLinkPopupBackground").fadeIn().unbind('click').click(function() {
+		$(this).fadeOut();
+	});
+	$('.photoLinkPopup').unbind('click').click(function() {
+		return false; //don't dismiss if they mis-click
+	});
+	
+	$('.photoLinkPopup').html('');  // first pass an empty string to clear the html
+	var ul = $('<ul></ul>').appendTo('.photoLinkPopup');
+	$(recipe.photoLinks).each(function(index, linkName) {
+		var li = $('<li></li>').text(linkName);
+		li.appendTo(ul);
+		li.click(function() {
+			showCoverPhotoPicker(parentDiv, recipe, false, linkName);
+			$(parentDiv+" .photoLinkPopupBackground").fadeOut();
+		});
+	});
+
+}
+
 
 function displayRecipeGrid(recipeArray) {
 	$('.recipeGrid').html('');  // first pass an empty string to clear the html
