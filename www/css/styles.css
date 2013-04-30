@@ -558,3 +558,24 @@ textarea.newNotes {
 	float: left;
 	background-size: cover;
 }
+
+
+
+
+
+
+/** Cookbook Gallery **/
+.cookbookGallery {
+	height: 748px;
+	width: 944px;
+	overflow-y: scroll !important;
+}
+
+.viewRecipeInitial {
+	display: none;
+}
+
+.viewRecipe {
+	width: 944px;
+	height: 100%;
+}

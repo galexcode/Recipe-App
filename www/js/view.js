@@ -89,43 +89,46 @@ function parseLinkedPhotos(parentDiv) {
 	 return linkedPhotos;
 }
 
-function displayRecipe(recipe) {
-	$('.recipeCover').css("background-image",recipe.coverphoto);
-	$('.displayName').html(recipe.name);
-	$('.displayYield').html(recipe.yield);
-	$('.displayActiveTime').html(recipe.activeTime);
-	$('.displayTotalTime').html(recipe.totalTime);
-	$('.displayCategory').html(recipe.category);
-	$('.listIngredients').html('');  // first pass an empty string to clear the html
-	var ul = $('<ul></ul>').appendTo('.listIngredients');
+function displayRecipe(parentDiv, recipe) {
+	if (! recipe.photos) {
+		recipe.photos = [];
+	}
+	$(parentDiv+' .recipeCover').css("background-image",recipe.coverphoto);
+	$(parentDiv+' .displayName').html(recipe.name);
+	$(parentDiv+' .displayYield').html(recipe.yield);
+	$(parentDiv+' .displayActiveTime').html(recipe.activeTime);
+	$(parentDiv+' .displayTotalTime').html(recipe.totalTime);
+	$(parentDiv+' .displayCategory').html(recipe.category);
+	$(parentDiv+' .listIngredients').html('');  // first pass an empty string to clear the html
+	var ul = $('<ul></ul>').appendTo(parentDiv+' .listIngredients');
 	$(recipe.ingredients).each(function(index, item) {
 		var linkedText = linkText(item, recipe);
 		var li = $('<li></li>').html(linkedText);
 		li.appendTo(ul);
 	});
-	$('.listInstructions').html('');  // first pass an empty string to clear the html
-	var ul = $('<ol></ol>').appendTo('.listInstructions');
+	$(parentDiv+' .listInstructions').html('');  // first pass an empty string to clear the html
+	var ul = $('<ol></ol>').appendTo(parentDiv+' .listInstructions');
 	$(recipe.instructions).each(function(index, item) {
 		var linkedText = linkText(item, recipe);
 		var li = $('<li></li>').html(linkedText);
 		li.appendTo(ul);
 	});
-	$('.displayNotes').html(recipe.notes);
-	$('.listTags').html('');  // first pass an empty string to clear the html
-	var ul = $('<ul></ul>').appendTo('.listTags');
+	$(parentDiv+' .displayNotes').html(recipe.notes);
+	$(parentDiv+' .listTags').html('');  // first pass an empty string to clear the html
+	var ul = $('<ul></ul>').appendTo(parentDiv+' .listTags');
 	$(recipe.tags).each(function(index, item) {
 		var li = $('<li></li>').html(item);
 		li.appendTo(ul);
 	});
 	
-	var gallery = $('.photoGalleryInner').html('');  // first pass an empty string to clear the html
+	var gallery = $(parentDiv+' .photoGalleryInner').html('');  // first pass an empty string to clear the html
 	$(recipe.photos).each(function(index, photoObject) {
 		var image = $('<a></a>')
 		 .attr('href',unUrl(photoObject.photo))
 		 .addClass('fresco')
 		 .addClass('photoGalleryItem')
 		 .css('background-image', photoObject.photo)
-		 .attr('data-fresco-group', recipe.name)
+		 .attr('data-fresco-group', 'gallery-'+recipe.name)
 		 .attr('data-fresco-caption',photoObject.link)
 		 .appendTo(gallery);
 	});
@@ -142,7 +145,7 @@ function linkText(text, recipe) {
 	for (var i=0; i<recipe.photos.length; i++) {
 		var photoObject = recipe.photos[i];
 		linkedText = linkedText.replace("["+photoObject.link+"]",
-			'<a href="'+unUrl(photoObject.photo)+'" class="fresco" data-fresco-group="'+recipe.name+'" data-fresco-caption="'+photoObject.link+'"> '+photoObject.link+'</a>'); 
+			'<a href="'+unUrl(photoObject.photo)+'" class="fresco" data-fresco-group="link-'+recipe.name+'" data-fresco-caption="'+photoObject.link+'"> '+photoObject.link+'</a>'); 
 		
 	}
 	return linkedText;
@@ -260,8 +263,62 @@ function displayRecipeGrid(recipeArray) {
 		a.css("background-image", recipe.coverphoto);
 		a.appendTo(li);
 		a.unbind('click').click(function(){  //  .unbind('click') removes any previous click events attached
-			actionDisplayRecipe(recipe.name);
+			actionDisplayMultipleRecipes(recipeArray, index);
 		});
 		//console.log("made a for "+name);
 	});
+}
+
+
+
+function displayRecipeGallery(recipeArray, indexInArray) {
+	var gallery = $(".cookbookGallery");
+	gallery.html('');
+	
+	carousel = new SwipeView('.cookbookGallery', {
+		numberOfPages: recipeArray.length,
+		hastyPageFlip: true,
+	});
+	
+	console.log("Initializing carousel with : "+recipeArray.length);
+	
+	// Load initial data
+	for (i=0; i<3; i++) {
+
+		$(".viewRecipeInitial").clone()
+			.removeClass("viewRecipeInitial")
+			.addClass("viewRecipe")
+			.addClass("viewRecipe"+i)
+			.appendTo(carousel.masterPages[i]);
+		var index = (i+indexInArray-1)%recipeArray.length;
+		displayRecipe(".viewRecipe"+i, recipeArray[index]);
+	}
+	
+	
+	carousel.onFlip(function () {
+		var el,
+			upcoming,
+			i;
+	
+		for (i=0; i<3; i++) {
+			upcoming = carousel.masterPages[i].dataset.upcomingPageIndex;
+	
+			if (upcoming != carousel.masterPages[i].dataset.pageIndex) {
+				var index = (upcoming+indexInArray)%recipeArray.length;
+				displayRecipe(".viewRecipe"+i, recipeArray[index]);
+				
+			}
+		}
+	});
+
+	
+	function recheck() {	
+		carousel.refreshSize();
+		console.log("Width: "+carousel.wrapper.clientWidth);
+		if (carousel.wrapper.clientWidth == 0) {
+			setTimeout(recheck,200);
+		}
+	}
+	setTimeout(recheck, 200);
+
 }

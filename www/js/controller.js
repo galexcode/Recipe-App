@@ -141,13 +141,22 @@ function actionSaveRecipe(parentDiv, oldRecipe) {
 	}
 }
 
-function actionDisplayRecipe(name) {
+function actionDisplaySingleRecipe(name) {
 	var recipe = retrieveRecipe(name);
-	displayRecipe(recipe);
+	displayRecipeGallery([recipe], 0);
 	$.mobile.changePage( "#cookbook", {      
 		transition: "fade",    
 	});
 }
+
+function actionDisplayMultipleRecipes(recipes, index) {
+	var recipe = retrieveRecipe(name);
+	displayRecipeGallery(recipes, index);
+	$.mobile.changePage( "#cookbook", {      
+		transition: "fade",    
+	});
+}
+
 
 function actionEditRecipe(recipe) {
 	displayEditableRecipe(recipe);

@@ -4,7 +4,7 @@ function saveRecipe(recipe) {
 
 function retrieveRecipe(name) {
 	var retrievedRecipe = JSON.parse(window.localStorage.getItem(name));
-	console.log("recipe retrieved:");
+	console.log("recipe retrieved: ["+name+"]");
 	console.log(retrievedRecipe);
 	return retrievedRecipe;
 }
