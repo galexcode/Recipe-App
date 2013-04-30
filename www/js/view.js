@@ -115,6 +115,21 @@ function displayRecipe(recipe) {
 		var li = $('<li></li>').html(item);
 		li.appendTo(ul);
 	});
+	
+	var gallery = $('.photoGalleryInner').html('');  // first pass an empty string to clear the html
+	$(recipe.photos).each(function(index, photoObject) {
+		var image = $('<a></a>')
+		 .attr('href',unUrl(photoObject.photo))
+		 .addClass('fresco')
+		 .addClass('photoGalleryItem')
+		 .css('background-image', photoObject.photo)
+		 .attr('data-fresco-group', recipe.name)
+		 .attr('data-fresco-caption',photoObject.link)
+		 .appendTo(gallery);
+	});
+
+	
+	
 	$('.editButton').unbind('click').click(function(){  //  .unbind('click') removes any previous click events attached
 		actionEditRecipe(recipe);
 	});

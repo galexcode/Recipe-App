@@ -519,6 +519,7 @@ textarea.newNotes {
 .recipeContent {
 	margin: 0 auto;
 	width: 688px;
+	margin-bottom: 40px;
 }
 .col1, .col2 {
 	float: left;
@@ -535,4 +536,25 @@ textarea.newNotes {
    display: block; 
    height: 0; 
    clear: both;
+}
+
+.photoGallery {
+	padding-top: 20px;
+	width: 100%;
+	height: 80px;
+	overflow-y: hidden;
+	overflow-x: scroll;
+}
+
+.photoGalleryInner {
+	max-width: 10000px;
+	width: 10000px;
+}
+
+.photoGalleryItem {
+	display: block;
+	width: 80px;
+	height: 80px;
+	float: left;
+	background-size: cover;
 }
