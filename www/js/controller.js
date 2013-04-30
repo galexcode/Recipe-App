@@ -133,24 +133,26 @@ function actionSaveRecipe(parentDiv, oldRecipe) {
 			clearRecipeContents();
 		}
 		saveRecipe(recipe);
-		displayRecipe(recipe);
-		refreshRecipeGrid();
-		$.mobile.changePage("#cookbook", {      
-			transition: "fade",    
-		});
+		actionDisplaySingleRecipe(recipe.name);
 	}
 }
 
 function actionDisplaySingleRecipe(name) {
 	var recipe = retrieveRecipe(name);
-	displayRecipeGallery([recipe], 0);
+	var recipeArray = retrieveRecipeListSortedByName();
+	var index = 0;
+	for (var i=0; i<recipeArray.length; i++) {
+	    if (recipeArray[i].name == recipe.name) {
+		index = i;
+	    }
+	}
+	displayRecipeGallery(recipeArray, index);
 	$.mobile.changePage( "#cookbook", {      
 		transition: "fade",    
 	});
 }
 
 function actionDisplayMultipleRecipes(recipes, index) {
-	var recipe = retrieveRecipe(name);
 	displayRecipeGallery(recipes, index);
 	$.mobile.changePage( "#cookbook", {      
 		transition: "fade",    

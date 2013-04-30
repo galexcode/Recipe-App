@@ -135,7 +135,7 @@ function displayRecipe(parentDiv, recipe) {
 
 	
 	
-	$('.editButton').unbind('click').click(function(){  //  .unbind('click') removes any previous click events attached
+	$(parentDiv+' .editButton').unbind('click').click(function(){  //  .unbind('click') removes any previous click events attached
 		actionEditRecipe(recipe);
 	});
 }
@@ -290,7 +290,9 @@ function displayRecipeGallery(recipeArray, indexInArray) {
 			.addClass("viewRecipe")
 			.addClass("viewRecipe"+i)
 			.appendTo(carousel.masterPages[i]);
-		var index = (i+indexInArray-1)%recipeArray.length;
+		var index = i-1;
+		if (index < 0) index = recipeArray.length+index;
+		index = index % recipeArray.length;
 		displayRecipe(".viewRecipe"+i, recipeArray[index]);
 	}
 	
@@ -304,7 +306,7 @@ function displayRecipeGallery(recipeArray, indexInArray) {
 			upcoming = carousel.masterPages[i].dataset.upcomingPageIndex;
 	
 			if (upcoming != carousel.masterPages[i].dataset.pageIndex) {
-				var index = (upcoming+indexInArray)%recipeArray.length;
+				var index = upcoming;
 				displayRecipe(".viewRecipe"+i, recipeArray[index]);
 				
 			}
@@ -317,7 +319,10 @@ function displayRecipeGallery(recipeArray, indexInArray) {
 		console.log("Width: "+carousel.wrapper.clientWidth);
 		if (carousel.wrapper.clientWidth == 0) {
 			setTimeout(recheck,200);
+		} else {
+		    carousel.goToPage(indexInArray);
 		}
+
 	}
 	setTimeout(recheck, 200);
 

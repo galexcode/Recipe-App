@@ -1,0 +1,110 @@
+diff --git www/css/styles.css www/css/styles.css
+index dbc3b39..611a19e 100755
+--- www/css/styles.css
++++ www/css/styles.css
+@@ -566,8 +566,10 @@ textarea.newNotes {
+ 
+ /** Cookbook Gallery **/
+ .cookbookGallery {
++	position: relative;
++	left: -80px;
++	width: 1024px;
+ 	height: 748px;
+-	width: 944px;
+ 	overflow-y: scroll !important;
+ }
+ 
+@@ -577,5 +579,6 @@ textarea.newNotes {
+ 
+ .viewRecipe {
+ 	width: 944px;
++	margin-left: 80px;
+ 	height: 100%;
+-}
+\ No newline at end of file
++}
+diff --git www/js/controller.js www/js/controller.js
+index 8de1157..bbf1095 100755
+--- www/js/controller.js
++++ www/js/controller.js
+@@ -133,24 +133,26 @@ function actionSaveRecipe(parentDiv, oldRecipe) {
+ 			clearRecipeContents();
+ 		}
+ 		saveRecipe(recipe);
+-		displayRecipe(recipe);
+-		refreshRecipeGrid();
+-		$.mobile.changePage("#cookbook", {      
+-			transition: "fade",    
+-		});
++		actionDisplaySingleRecipe(recipe.name);
+ 	}
+ }
+ 
+ function actionDisplaySingleRecipe(name) {
+ 	var recipe = retrieveRecipe(name);
+-	displayRecipeGallery([recipe], 0);
++	var recipeArray = retrieveRecipeListSortedByName();
++	var index = 0;
++	for (var i=0; i<recipeArray.length; i++) {
++	    if (recipeArray[i].name == recipe.name) {
++		index = i;
++	    }
++	}
++	displayRecipeGallery(recipeArray, index);
+ 	$.mobile.changePage( "#cookbook", {      
+ 		transition: "fade",    
+ 	});
+ }
+ 
+ function actionDisplayMultipleRecipes(recipes, index) {
+-	var recipe = retrieveRecipe(name);
+ 	displayRecipeGallery(recipes, index);
+ 	$.mobile.changePage( "#cookbook", {      
+ 		transition: "fade",    
+diff --git www/js/view.js www/js/view.js
+index 009ebcd..a355311 100755
+--- www/js/view.js
++++ www/js/view.js
+@@ -135,7 +135,7 @@ function displayRecipe(parentDiv, recipe) {
+ 
+ 	
+ 	
+-	$('.editButton').unbind('click').click(function(){  //  .unbind('click') removes any previous click events attached
++	$(parentDiv+' .editButton').unbind('click').click(function(){  //  .unbind('click') removes any previous click events attached
+ 		actionEditRecipe(recipe);
+ 	});
+ }
+@@ -290,7 +290,9 @@ function displayRecipeGallery(recipeArray, indexInArray) {
+ 			.addClass("viewRecipe")
+ 			.addClass("viewRecipe"+i)
+ 			.appendTo(carousel.masterPages[i]);
+-		var index = (i+indexInArray-1)%recipeArray.length;
++		var index = i-1;
++		if (index < 0) index = recipeArray.length+index;
++		index = index % recipeArray.length;
+ 		displayRecipe(".viewRecipe"+i, recipeArray[index]);
+ 	}
+ 	
+@@ -304,7 +306,7 @@ function displayRecipeGallery(recipeArray, indexInArray) {
+ 			upcoming = carousel.masterPages[i].dataset.upcomingPageIndex;
+ 	
+ 			if (upcoming != carousel.masterPages[i].dataset.pageIndex) {
+-				var index = (upcoming+indexInArray)%recipeArray.length;
++				var index = upcoming;
+ 				displayRecipe(".viewRecipe"+i, recipeArray[index]);
+ 				
+ 			}
+@@ -317,8 +319,11 @@ function displayRecipeGallery(recipeArray, indexInArray) {
+ 		console.log("Width: "+carousel.wrapper.clientWidth);
+ 		if (carousel.wrapper.clientWidth == 0) {
+ 			setTimeout(recheck,200);
++		} else {
++		    carousel.goToPage(indexInArray);
+ 		}
++
+ 	}
+ 	setTimeout(recheck, 200);
+ 
+-}
+\ No newline at end of file
++}
