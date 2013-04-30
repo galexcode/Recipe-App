@@ -114,10 +114,29 @@ function displayEditableRecipe(recipe) {
 		actionDeleteRecipe('#editRecipe', recipe);
 	});
 	$('#editRecipe .addCoverPhoto').unbind('click').click(function(){
+		showCoverPhotoPicker(recipe);
+	});
+}
+
+function showCoverPhotoPicker(recipe) {
+	$(".bigPopupBackground").fadeIn().unbind('click').click(function() {
+		$(this).fadeOut();
+	});
+	$(".bigPopupBackground .optionOne").unbind('click').click(function() {
 		actionTakeCoverPhoto(recipe, function(imagePath) {
+			$(".bigPopupBackground").fadeOut();
 			console.log("Photo was a success. setting as background image");
 			$("#editRecipe .addCoverPhoto").css("background-image", "url("+imagePath+")");
 		});
+		return false;
+	});
+	$(".bigPopupBackground .optionTwo").unbind('click').click(function() {
+		actionPickCoverPhoto(recipe, function(imagePath) {
+			$(".bigPopupBackground").fadeOut();
+			console.log("Photo was a success. setting as background image");
+			$("#editRecipe .addCoverPhoto").css("background-image", "url("+imagePath+")");
+		});
+		return false;
 	});
 }
 

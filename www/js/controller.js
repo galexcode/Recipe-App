@@ -59,11 +59,11 @@ $(document).ready(function(){
 
 
 /** From http://stackoverflow.com/questions/9180731/phonegap-retrieve-photo-from-camera-roll-via-path **/
-function camera(nameOfRecipe, callbackWhenAllDone) {
+function camera(nameOfRecipe, callbackWhenAllDone, source) {
 	var settings = { 
 		quality: 25, 
 		destinationType: Camera.DestinationType.FILE_URI,
-		sourceType: Camera.PictureSourceType.CAMERA,
+		sourceType: source,
 		targetWidth: 2048,
 		//allowEdit : true,
 	};
@@ -173,5 +173,8 @@ function actionSortRecipesByName() {
 
 
 function actionTakeCoverPhoto(recipe, callbackWhenAllDone) {
-	camera(recipe.name, callbackWhenAllDone);
+	camera(recipe.name, callbackWhenAllDone, Camera.PictureSourceType.CAMERA);
+}
+function actionPickCoverPhoto(recipe, callbackWhenAllDone) {
+	camera(recipe.name, callbackWhenAllDone, Camera.PictureSourceType.PHOTOLIBRARY);
 }
