@@ -90,6 +90,28 @@ h1 {
     margin: 0px;
     padding-top: 18px;
     overflow: visible;
+    text-transform: uppercase;
+}
+
+#grid h1 {
+	background-image: url("../img/recipes_background_2X.png");
+    background-repeat: no-repeat;
+    background-size: 880px 80px;
+    background-position: 32px;
+}
+
+#createRecipe h1 {
+	background-image: url("../img/newrecipe_background_2X.png");
+    background-repeat: no-repeat;
+    background-size: 880px 80px;
+    background-position: 32px;
+}
+
+#editRecipe h1 {
+	background-image: url("../img/editrecipe_background_2X.png");
+    background-repeat: no-repeat;
+    background-size: 880px 80px;
+    background-position: 32px;
 }
 
 h2 {
@@ -107,6 +129,10 @@ h2 {
 .dotDivider {
 	padding-left: 20px;
 	padding-right: 20px;
+}
+
+#grid .content {
+	margin-top: -17px;	/* extra 17px at top for some reason */
 }
 
 .recipeGrid {
@@ -520,6 +546,18 @@ textarea.newNotes {
 	background-color: #FFCF0D;
 	background-image: url('/var/mobile/Applications/6F4DBE8A-F6E0-4CF5-B6AB-4CAEC52A6BBB/Documents/photos/undefinedHIib6f2fVlO4G0b5yc7t.jpg');
 	background-size: cover;
+}
+
+.recipeCoverRidge {
+	position: absolute;
+	top: 656px;
+	left: 0px;
+	width: 1024px;
+	height: 48px;
+	background-image: url('../img/cover_photo_bottom_ridge.png');
+	background-repeat: no-repeat;
+	background-size: 1024px 48px;
+	z-index: 10;
 }
 
 .displayName {
