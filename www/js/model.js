@@ -12,7 +12,7 @@ function retrieveRecipe(name) {
 function retrieveRecipeList() {
 	var recipeArray = [];
 	for (var i = 0; i < window.localStorage.length; i++) {
-		recipeArray.push(window.localStorage.key(i));
+		recipeArray.push(retrieveRecipe(window.localStorage.key(i)));
 	}
 	return recipeArray;
 }

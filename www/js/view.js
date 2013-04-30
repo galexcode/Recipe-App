@@ -124,13 +124,14 @@ function displayEditableRecipe(recipe) {
 function displayRecipeGrid(recipeArray) {
 	$('.recipeGrid').html('');  // first pass an empty string to clear the html
 	var ul = $('<ul></ul>').appendTo('.recipeGrid');
-	$(recipeArray).each(function(index, name) {
+	$(recipeArray).each(function(index, recipe) {
 		var li = $('<li></li>');
 		li.appendTo(ul);
-		var a = $('<a href="#"></a>').text(name);
+		var a = $('<a href="#"></a>').text(recipe.name);
+		a.css("background-image", recipe.coverphoto);
 		a.appendTo(li);
 		a.unbind('click').click(function(){  //  .unbind('click') removes any previous click events attached
-			actionDisplayRecipe(name);
+			actionDisplayRecipe(recipe.name);
 		});
 		//console.log("made a for "+name);
 	});
