@@ -128,6 +128,7 @@ h2 {
 	float: left;
 	margin: 0 16px 16px 0;
 	background-size: cover;
+	color: rgba(0,0,0,0);
 }
 
 .event {
@@ -422,28 +423,30 @@ textarea.newInstructions {
 	left: 0px;
 	top: 172px;
 }
+
 .textAreaTextIngredients {
 	position: absolute;
 	left: 176px;
 	top: 172px;
 }
+
 .textAreaTextInstructions {
 	position: absolute;
 	left: 528px;
 	top: 172px;
 }
+
 .textAreaTextTags {
 	position: absolute;
 	left: 0px;
 	top: 236px;
 }
+
 .textAreaTextNotes {
 	position: absolute;
 	left: 0px;
 	top: 432px;
 }
-
-
 
 textarea.newTags {
 	top: 260px;		
@@ -452,7 +455,6 @@ textarea.newTags {
 textarea.newNotes {
 	top: 456px; 
 }
-
 
 .saveHoverButton {
 	position: fixed;
@@ -464,8 +466,7 @@ textarea.newNotes {
 	border-top-right-radius: 40px;
 	background-color: #f00;
 	text-align: center;
-	padding-top: 20px;
-	 
+	padding-top: 20px; 
 }
 
 .bigPopupBackground, .photoLinkPopupBackground {
@@ -601,11 +602,37 @@ textarea.newNotes {
 	font-weight: 400;
 	font-size: 16px;
 	color: #000000;
-	margin-top: -
+}
+
+.twocols listIngredients, .twocols listInstructions {
+	margin-left: -12px;
+}
+
+.twocols li {
+	padding-bottom: 5px;
+}
+
+.twocols a {
+	color: #888888;
+	text-decoration: none;
+	padding-bottom: 1px;
+	border-bottom: 1px dotted #888888;
+}
+
+.twocols .listTags ul {
+	margin-left: -38px; /* to compensate for the lack of a bullet */
+}
+
+.twocols .listTags li {
+	display: inline;
+	margin: 0;
+ 	padding: 0;
+ 	padding-right: 16px;
 }
 
 .photoGallery {
 	padding-top: 20px;
+	padding-bottom: 40px;
 	width: 100%;
 	height: 80px;
 	overflow-y: hidden;
@@ -621,6 +648,7 @@ textarea.newNotes {
 	display: block;
 	width: 80px;
 	height: 80px;
+	margin-right: 8px;
 	float: left;
 	background-size: cover;
 }
