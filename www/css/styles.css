@@ -267,6 +267,13 @@ h2 {
 	opacity: 0;
 }
 
+.navigationLinkActive {
+	background-size: 8px 80px;
+	background-image: url(../img/tab_highlight.png);
+	background-repeat: no-repeat;
+	background-position-x: 100%;
+}
+
 #container {
 	position: relative;
 	top: 0px;
@@ -516,7 +523,7 @@ textarea.newNotes {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0,0,0,0.3);
+	background-color: rgba(0,0,0,0.5);
 	display: none;
 }
 
@@ -527,6 +534,14 @@ textarea.newNotes {
 	width: 624px;
 	height: 428px;
 	background-color: #f9f9f9;
+	-moz-box-shadow: 0 0 64px 16px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 0 64px 16px rgba(0,0,0,0.2);
+	box-shadow: 0 0 64px 16px rgba(0,0,0,0.2);
+	font-family: 'Lato', sans-serif;
+	font-weight: 200;
+	font-size: 16px;
+	font-style: italic;
+	text-transform: lowercase;
 }
 
 .bigPopup .optionOne, .bigPopup .optionTwo {
@@ -541,7 +556,7 @@ textarea.newNotes {
 .bigPopup .optionTwo {
 	right: 0px;
 	left: auto;
-	border-left: 1px dotted #ddd; 
+	border-left: 2px dotted #ddd; 
 }
 
 #createRecipe .button {

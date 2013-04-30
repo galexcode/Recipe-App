@@ -43,7 +43,32 @@ $(document).ready(function(){
 	refreshRecipeGrid();
 	setupNavigationBar();
 	setupCreateRecipe();
+	setupTabs();
 });
+
+
+
+function setupTabs() {
+	$(document).on('pagebeforechange', function(event) {
+		$(".navigationItem").removeClass("navigationLinkActive");
+	});
+	$("#grid").on('pagebeforeshow pageinit pageshow', function(event) {
+		$(".navigationItem").removeClass("navigationLinkActive");
+		$(".navigationGrid").addClass("navigationLinkActive");
+	});
+	//hack to make the grid one show
+	setTimeout(function() {
+		$(".navigationGrid").addClass("navigationLinkActive");
+	}, 200);
+	$("#createRecipe").on('pagebeforeshow', function(event) {
+		$(".navigationItem").removeClass("navigationLinkActive");
+		$(".navigationCreateRecipe").addClass("navigationLinkActive");
+	});	
+	$("#settings").on('pagebeforeshow', function(event) {
+		$(".navigationItem").removeClass("navigationLinkActive");
+		$(".navigationSettings").addClass("navigationLinkActive");
+	});	
+}
 
 
 

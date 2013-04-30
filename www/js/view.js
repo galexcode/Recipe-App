@@ -113,13 +113,25 @@ function displayRecipe(parentDiv, recipe) {
 		var li = $('<li></li>').html(linkedText);
 		li.appendTo(ul);
 	});
+	
 	$(parentDiv+' .displayNotes').html(recipe.notes);
+	if (recipe.notes) {
+		$(parentDiv+' .titleNotes').show();
+	} else {
+		$(parentDiv+' .titleNotes').hide();
+	}
+	
 	$(parentDiv+' .listTags').html('');  // first pass an empty string to clear the html
-	var ul = $('<ul></ul>').appendTo(parentDiv+' .listTags');
-	$(recipe.tags).each(function(index, item) {
-		var li = $('<li></li>').html(item);
-		li.appendTo(ul);
-	});
+	if (recipe.tags.length == 0) {
+		$(parentDiv+' .titleTags').hide();
+	} else {
+		$(parentDiv+' .titleTags').show();
+		var ul = $('<ul></ul>').appendTo(parentDiv+' .listTags');
+		$(recipe.tags).each(function(index, item) {
+			var li = $('<li></li>').html(item);
+			li.appendTo(ul);
+		});
+	}
 	
 	var gallery = $(parentDiv+' .photoGalleryInner').html('');  // first pass an empty string to clear the html
 	$(recipe.photos).each(function(index, photoObject) {
@@ -242,16 +254,20 @@ function showPhotoLinkPopup(parentDiv, recipe) {
 		return false; //don't dismiss if they mis-click
 	});
 	
-	$('.photoLinkPopup').html('');  // first pass an empty string to clear the html
-	var ul = $('<ul></ul>').appendTo('.photoLinkPopup');
-	$(recipe.photoLinks).each(function(index, linkName) {
-		var li = $('<li></li>').text(linkName);
-		li.appendTo(ul);
-		li.click(function() {
-			showCoverPhotoPicker(parentDiv, recipe, false, linkName);
-			$(parentDiv+" .photoLinkPopupBackground").fadeOut();
+	if (recipe.photoLinks == null || recipe.photoLinks.length == 0) {
+		$('.photoLinkPopup').html('<div class="nolinks">Please add brackets to link ingredients and instruction items</div>');
+	} else {
+		$('.photoLinkPopup').html('');  // first pass an empty string to clear the html
+		var ul = $('<ul></ul>').appendTo('.photoLinkPopup');
+		$(recipe.photoLinks).each(function(index, linkName) {
+			var li = $('<li></li>').text(linkName);
+			li.appendTo(ul);
+			li.click(function() {
+				showCoverPhotoPicker(parentDiv, recipe, false, linkName);
+				$(parentDiv+" .photoLinkPopupBackground").fadeOut();
+			});
 		});
-	});
+	}
 
 }
 
