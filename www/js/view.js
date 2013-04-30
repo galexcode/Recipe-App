@@ -8,6 +8,8 @@ function setupNavigationBar() {
     });
 }
 
+
+
 function clearRecipeContents() {
 	$('#createRecipe textarea').html('');  // first pass an empty string to clear the html
 }
@@ -95,6 +97,12 @@ function displayRecipe(recipe) {
 	});
 }
 
+function setupCreateRecipe() {
+	$('#createRecipe .addCoverPhoto').unbind('click').click(function(){
+		showCoverPhotoPicker("#createRecipe", createOrEditRecipe("#createRecipe"));
+	});
+}
+
 function displayEditableRecipe(recipe) {
 	$('#editRecipe .newName').val(recipe.name);
 	$('#editRecipe .newYield').val(recipe.yield);
@@ -114,27 +122,27 @@ function displayEditableRecipe(recipe) {
 		actionDeleteRecipe('#editRecipe', recipe);
 	});
 	$('#editRecipe .addCoverPhoto').unbind('click').click(function(){
-		showCoverPhotoPicker(recipe);
+		showCoverPhotoPicker("#editRecipe", recipe);
 	});
 }
 
-function showCoverPhotoPicker(recipe) {
-	$(".bigPopupBackground").fadeIn().unbind('click').click(function() {
+function showCoverPhotoPicker(parentDiv, recipe) {
+	$(parentDiv+" .bigPopupBackground").fadeIn().unbind('click').click(function() {
 		$(this).fadeOut();
 	});
-	$(".bigPopupBackground .optionOne").unbind('click').click(function() {
+	$(parentDiv+" .bigPopupBackground .optionOne").unbind('click').click(function() {
 		actionTakeCoverPhoto(recipe, function(imagePath) {
-			$(".bigPopupBackground").fadeOut();
+			//$(".bigPopupBackground").fadeOut();
 			console.log("Photo was a success. setting as background image");
-			$("#editRecipe .addCoverPhoto").css("background-image", "url("+imagePath+")");
+			$(parentDiv+" .addCoverPhoto").css("background-image", "url("+imagePath+")");
 		});
 		//return false;
 	});
-	$(".bigPopupBackground .optionTwo").unbind('click').click(function() {
+	$(parentDiv+" .bigPopupBackground .optionTwo").unbind('click').click(function() {
 		actionPickCoverPhoto(recipe, function(imagePath) {
-			$(".bigPopupBackground").fadeOut();
+			//$(".bigPopupBackground").fadeOut();
 			console.log("Photo was a success. setting as background image");
-			$("#editRecipe .addCoverPhoto").css("background-image", "url("+imagePath+")");
+			$(parentDiv+" .addCoverPhoto").css("background-image", "url("+imagePath+")");
 		});
 		//return false;
 	});

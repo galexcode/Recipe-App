@@ -42,6 +42,7 @@ var app = {
 $(document).ready(function(){
 	refreshRecipeGrid();
 	setupNavigationBar();
+	setupCreateRecipe();
 });
 
 
