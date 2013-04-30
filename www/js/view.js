@@ -97,25 +97,44 @@ function displayRecipe(recipe) {
 	$('.listIngredients').html('');  // first pass an empty string to clear the html
 	var ul = $('<ul></ul>').appendTo('.listIngredients');
 	$(recipe.ingredients).each(function(index, item) {
-		var li = $('<li></li>').text(item);
+		var linkedText = linkText(item, recipe);
+		var li = $('<li></li>').html(linkedText);
 		li.appendTo(ul);
 	});
 	$('.listInstructions').html('');  // first pass an empty string to clear the html
 	var ul = $('<ol></ol>').appendTo('.listInstructions');
 	$(recipe.instructions).each(function(index, item) {
-		var li = $('<li></li>').text(item);
+		var linkedText = linkText(item, recipe);
+		var li = $('<li></li>').html(linkedText);
 		li.appendTo(ul);
 	});
 	$('.displayNotes').html(recipe.notes);
 	$('.listTags').html('');  // first pass an empty string to clear the html
 	var ul = $('<ul></ul>').appendTo('.listTags');
 	$(recipe.tags).each(function(index, item) {
-		var li = $('<li></li>').text(item);
+		var li = $('<li></li>').html(item);
 		li.appendTo(ul);
 	});
 	$('.editButton').unbind('click').click(function(){  //  .unbind('click') removes any previous click events attached
 		actionEditRecipe(recipe);
 	});
+}
+
+function linkText(text, recipe) {
+	var linkedText = text;
+	for (var i=0; i<recipe.photos.length; i++) {
+		var photoObject = recipe.photos[i];
+		linkedText = linkedText.replace("["+photoObject.link+"]",
+			'<a href="'+unUrl(photoObject.photo)+'" class="fresco" data-fresco-group="'+recipe.name+'" data-fresco-caption="'+photoObject.link+'"> '+photoObject.link+'</a>'); 
+		
+	}
+	return linkedText;
+}
+
+function unUrl(photo) {
+	var o = photo.replace("url(", "");
+	o = o.substring(o, o.length - 1);
+	return o;
 }
 
 function setupCreateRecipe() {
