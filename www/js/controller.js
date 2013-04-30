@@ -47,24 +47,76 @@ $(document).ready(function(){
 
 
 
-function camera(){
-	var settings = {
-		quality: 100,
-		destinationType: Camera.DestinationType.DATA_URL,
+// function camera(){
+// 	var settings = {
+// 		quality: 100,
+// 		destinationType: Camera.DestinationType.DATA_URL,
+// 		sourceType: Camera.PictureSourceType.CAMERA,
+// 		saveToPhotoAlbum: true,
+// 	};
+// 	navigator.camera.getPicture(cameraSuccess, cameraFailure, settings);
+// }
+
+
+/** From http://stackoverflow.com/questions/9180731/phonegap-retrieve-photo-from-camera-roll-via-path **/
+function camera(nameOfRecipe, callbackWhenAllDone) {
+	var settings = { 
+		quality: 50, 
+		destinationType: Camera.DestinationType.FILE_URI,
 		sourceType: Camera.PictureSourceType.CAMERA,
-		saveToPhotoAlbum: true,
+		targetWidth: 2048,
+		targetHeight: 2048,
+		//allowEdit : true,
 	};
-	navigator.camera.getPicture(cameraSuccess, cameraFailure, settings);
+	
+	navigator.camera.getPicture(onPhotoURISuccess, fail, settings);
+	
+	
+	function onPhotoURISuccess(imageURI) {
+		window.resolveLocalFileSystemURI(imageURI, function(fileEntry) {
+			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSys) { 
+				fileSys.root.getDirectory("photos", {create: true, exclusive: false}, function(dir) { 
+						fileEntry.copyTo(dir, makeid(nameOfRecipe)+".jpg", onCopySuccess, fail); 
+					}, fail); 
+			}, fail); 
+		}, fail);    
+	}
+		
+	function onCopySuccess(entry) {
+		console.log("Photo Success: "+entry.fullPath);
+		//WE NEED TO DO SOMETHING WITH THIS RIGHT HERE.
+		callbackWhenAllDone(entry.fullPath);
+	}
+	
+	function fail(error) {
+		console.log("Photo Error: "+error.code);
+	}
+	
 }
 
-function cameraSuccess(imageData){
-	console.log("saved photo");
-	document.getElementById('image').src = "data:image/jpeg;base64," + imageData;  //  id might need to be changed to class 'newCoverPhoto'
+function makeid(prefix) { //from http://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript
+    var text = prefix+"";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 20; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
 }
 
-function cameraFailure(){
-	alert("Error");
-}
+
+/**********/
+
+
+
+// function cameraSuccess(imageData){
+// 	console.log("saved photo");
+// 	document.getElementById('image').src = "data:image/jpeg;base64," + imageData;  //  id might need to be changed to class 'newCoverPhoto'
+// }
+// 
+// function cameraFailure(){
+// 	alert("Error");
+// }
 
 
 
@@ -117,4 +169,10 @@ function refreshRecipeGrid() {
 function actionSortRecipesByName() {
 	var recipeArray = retrieveRecipeListSortedByName();
 	displayRecipeGrid(recipeArray);
+}
+
+
+
+function actionTakeCoverPhoto(recipe, callbackWhenAllDone) {
+	camera(recipe.name, callbackWhenAllDone);
 }

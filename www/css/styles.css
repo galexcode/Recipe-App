@@ -223,7 +223,7 @@ h2 {
 	top: 0px;
 	left: 80px;
 	width: 944px;
-	height: 768px;
+	height: 100%;
 }
 
 
@@ -258,6 +258,7 @@ h2 {
 	line-height: 160px;
 	vertical-align: center;
 	text-align: center;
+	background-size: cover;
 }
 
 .addPhotos {
@@ -417,3 +418,53 @@ textarea.newNotes {
 	 
 }
 
+
+
+
+
+
+
+
+/* Cookbook page */
+.recipeCover {
+	height: 688px;
+	width: 100%;
+	display: table;
+	background-color: #FFCF0D;
+	background-image: url('/var/mobile/Applications/6F4DBE8A-F6E0-4CF5-B6AB-4CAEC52A6BBB/Documents/photos/undefinedHIib6f2fVlO4G0b5yc7t.jpg');
+	background-size: cover;
+}
+.displayName {
+	display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 80%;
+}
+.metadata {
+	min-height: 60px;
+	margin-top: 20px;
+}
+.editButton {
+	float: right;
+}
+
+.recipeContent {
+	margin: 0 auto;
+	width: 688px;
+}
+.col1, .col2 {
+	float: left;
+	width: 336px;
+	background-color: #FF00DD;
+}
+.col2 {
+	margin-left: 16px;
+	background-color: #AA00FF;
+}
+.twocols:after {
+	content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: both;
+}

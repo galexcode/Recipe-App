@@ -53,10 +53,10 @@
 					<h1>Create Recipe</h1>
 				</div>
 				<div class="createRecipeArea" data-role="content">
-					<div class="addCoverPhoto" onclick="javascript:camera()" data-role="none">
+					<div class="addCoverPhoto" data-role="none">
 						<span class="addPhotoText">Add Cover Photo</span>
 					</div>
-					<div class="addPhotos" onclick="javascript:camera()" data-role="none">
+					<div class="addPhotos" data-role="none">
 						<span class="addPhotoText">Add Recipe Photos</span>
 					</div>
 					<img class="newCoverPhoto">
@@ -102,20 +102,33 @@
 
 			<div id="cookbook" data-role="page">			
 				<div class="viewRecipe">
-					<h2 class="displayName"></h2>
-					<img class="displayPhoto"/>
-					<h3 class="displayYield"></h3>
-					<h3 class="displayActiveTime"></h3>
-					<h3 class="displayTotalTime"></h3>
-					<h3 class="displayCategory"></h3>
-					<h4 class="titleIngredients">Ingredients</h4>
-					<p class="listIngredients"></p>
-					<h4 class="titleInstructions">Instructions</h4>
-					<p class="listInstructions"></p>
-					<p class="displayNotes"></p>
-					<h4 class="titleTags">Tags</h4>
-					<p class="listTags"></p>
-					<button class="button editButton" name="edit">Edit</button>
+					<div class="recipeCover">
+						<h2 class="displayName"></h2>
+					</div>
+					<div class="recipeContent">
+						<div class="metadata">
+							<span class="displayYieldTitle">Yield: <span class="displayYield innerText"></span></span>
+							<span class="displayActiveTimeTitle">Active Time: <span class="displayActiveTime innerText"></span> </span>
+							<span class="displayTotalTimeTitle">Total Time: <span class="displayTotalTime innerText"></span> </span>
+							<span class="displayCategoryTitle">Category: <span class="displayCategory innerText"></span> </span>
+							<button class="button editButton" name="edit" data-role="none">Edit</button>
+						</div>
+						<div class="twocols">
+							<div class="col1">
+								<h4 class="titleIngredients">Ingredients</h4>
+								<p class="listIngredients"></p>
+								<h4 class="titleNotes">Notes</h4>
+								<p class="displayNotes"></p>
+							</div>
+							<div class="col2">
+								<h4 class="titleInstructions">Instructions</h4>
+								<p class="listInstructions"></p>
+								<p class="displayNotes"></p>
+								<h4 class="titleTags">Tags</h4>
+								<p class="listTags"></p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			
@@ -124,10 +137,10 @@
 					<h1>Edit Recipe</h1>
 				</div>
 				<div class="createRecipeArea" data-role="content">
-					<div class="addCoverPhoto" onclick="javascript:camera()" data-role="none">
+					<div class="addCoverPhoto" data-role="none">
 						<span class="addPhotoText">Add Cover Photo</span>
 					</div>
-					<div class="addPhotos" onclick="javascript:camera()" data-role="none">
+					<div class="addPhotos" data-role="none">
 						<span class="addPhotoText">Add Recipe Photos</span>
 					</div>
 					<img class="newCoverPhoto">
