@@ -226,13 +226,125 @@ h2 {
 	height: 768px;
 }
 
-textarea {
-  resize: none;
+
+
+
+/* CREATE / EDIT RECIPE */
+
+.createRecipeArea {
+	position: relative;
+	width: 864px;
+	height: 616px;
+	padding: 40px;
 }
 
+.addCoverPhoto {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-color: rgba(0,0,0,0.2);
+	width: 160px;
+	height: 160px;
+	float: left;
+}
 
+textarea {
+  resize: none;
+  float: left;
+}
 
+textarea.newName, textarea.newYield, textarea.newActiveTime, textarea.newTotalTime {
+	position: absolute;
+	width: 220px;		/* 230 - 224 = 6 */ /* +2 */
+	height: 24px;		/* 34 - 28 = 6 */ /* +2 */
+	border: 0;
+	background-color: rgba(0,0,0,0.1);
+}
 
+textarea.newName {
+	top: 48px;		/* 0 + 48 = 48 */
+	left: 328px;	/* 288 + 40 = 328 */
+}
+
+textarea.newYield {
+	top: 92px;		/* 44 + 48 = 92 */
+	left: 328px;	/* 288 + 40 = 328 */
+}
+
+textarea.newActiveTime {
+	top: 136px;		/* 88 + 48 = 136 */
+	left: 328px;	/* 288 + 40 = 328 */
+}
+
+textarea.newTotalTime {
+	top: 180px;		/* 132 + 48 = 180 */
+	left: 328px;	/* 288 + 40 = 328 */
+}
+
+textarea.placeholder {
+	line-height: 24px;
+	color: #000;
+}
+
+select.newCategory {
+	position: absolute;
+	top: 196px;
+	left: 40px;
+	width: 160px;
+	height: 28px;
+	background-color: rgba(0,0,0,0.1);
+}
+
+.createRecipeArea h3 {
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 22px;
+	margin: 0;
+	padding: 0 0 22px 0;
+	height: 22px;
+}
+
+.textAreaTextContainer {
+	position: absolute;
+	top: 50px;
+	left: 225px;
+	text-align: right;
+}
+
+textarea.newIngredients, textarea.newInstructions {
+	position: absolute;
+	top: 244px;		/* 196 + 48 = 244 */
+	width: 336px;		
+	height: 420px;		
+	border: 0;
+	background-color: rgba(0,0,0,0.1);
+}
+
+textarea.newNotes, textarea.newTags {
+	position: absolute;
+	left: 40; 		/* 0 + 40 */
+	width: 160px;		
+	height: 160px;		
+	border: 0;
+	background-color: rgba(0,0,0,0.1);
+}
+
+textarea.newIngredients {
+	left: 216px; 	/* 176 + 24 + 16 = 216 */
+}
+
+textarea.newInstructions {
+	left: 568px; 	/* 528 + 24 + 16 = 568 */
+}
+
+textarea.newTags {
+	top: 260px;		
+}
+
+textarea.newNotes {
+	top: 456px; 
+}
 
 
 
