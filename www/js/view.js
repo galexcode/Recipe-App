@@ -161,6 +161,9 @@ function setupCreateRecipe() {
 	$('#createRecipe .addCoverPhoto').unbind('click').click(function(){
 		showCoverPhotoPicker("#createRecipe", createOrEditRecipe("#createRecipe"));
 	});
+	$('#createRecipe .addPhotos').unbind('click').click(function(){
+		showPhotoLinkPopup("#createRecipe", createOrEditRecipe("#createRecipe"));
+	});
 }
 
 function displayEditableRecipe(recipe) {

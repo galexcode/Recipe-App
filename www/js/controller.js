@@ -133,6 +133,7 @@ function actionSaveRecipe(parentDiv, oldRecipe) {
 			clearRecipeContents();
 		}
 		saveRecipe(recipe);
+		refreshRecipeGrid();
 		actionDisplaySingleRecipe(recipe.name);
 	}
 }
