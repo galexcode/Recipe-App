@@ -156,7 +156,7 @@ h2 {
 	top: 0;
 	left: 0;
 	width: 80px;
-	height: 768px;
+	height: 748px;
 	z-index: 10;
 }
 
@@ -214,7 +214,7 @@ h2 {
 }
 
 .navigationLinksBackgroundCollapsed {
-	margin-top: -768px;
+	margin-top: -748px;
 	opacity: 0;
 }
 
