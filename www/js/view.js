@@ -128,7 +128,7 @@ function showCoverPhotoPicker(recipe) {
 			console.log("Photo was a success. setting as background image");
 			$("#editRecipe .addCoverPhoto").css("background-image", "url("+imagePath+")");
 		});
-		return false;
+		//return false;
 	});
 	$(".bigPopupBackground .optionTwo").unbind('click').click(function() {
 		actionPickCoverPhoto(recipe, function(imagePath) {
@@ -136,7 +136,7 @@ function showCoverPhotoPicker(recipe) {
 			console.log("Photo was a success. setting as background image");
 			$("#editRecipe .addCoverPhoto").css("background-image", "url("+imagePath+")");
 		});
-		return false;
+		//return false;
 	});
 }
 
