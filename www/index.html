@@ -81,7 +81,6 @@
 							<option value="dessert">Dessert</option>
 						</select>
 					</form>
-					<div class="zerozero"></div>
 					<h3 class="textAreaText textAreaTextIngredients">Ingredients  :</h3>
 					<textarea class="newIngredients" name="ingredients" placeholder="" data-role="none"></textarea>
 					<h3 class="textAreaText textAreaTextInstructions">Instructions  :</h3>
@@ -124,25 +123,43 @@
 				<div>
 					<h1>Edit Recipe</h1>
 				</div>
-				<div data-role="content">
-					<button onclick="javascript:camera()"></button>
+				<div class="createRecipeArea" data-role="content">
+					<div class="addCoverPhoto" onclick="javascript:camera()" data-role="none">
+						<span class="addPhotoText">Add Cover Photo</span>
+					</div>
+					<div class="addPhotos" onclick="javascript:camera()" data-role="none">
+						<span class="addPhotoText">Add Recipe Photos</span>
+					</div>
 					<img class="newCoverPhoto">
-					<textarea class="newName" name="name" rows="1" cols="32" placeholder="Recipe Name"></textarea>
-					<textarea class="newYield" name="yield" rows="1" cols="32" placeholder="Yield"></textarea>
-					<textarea class="newActiveTime" name="activeTime" rows="1" cols="32" placeholder="Active Time"></textarea>
-					<textarea class="newTotalTime" name="totalTime" rows="1" cols="32" placeholder="Total Time"></textarea>
-					<form action="">
-						<select name="category" class="newCategory">
+					
+					<div class="textAreaTextContainer">
+						<h3 class="textAreaText">Recipe Name  :</h3>
+						<h3 class="textAreaText textAreaTextYield">Yield  :</h3>
+						<h3 class="textAreaText textAreaTextActiveTime">Active Time  :</h3>
+						<h3 class="textAreaText textAreaTextTotalTime">Total Time  :</h3>
+					</div>
+					<textarea class="newName" name="name" placeholder="" data-role="none" ></textarea>
+					<textarea class="newYield" name="yield" placeholder="" data-role="none"></textarea>
+					<textarea class="newActiveTime" name="activeTime" placeholder="" data-role="none"></textarea>
+					<textarea class="newTotalTime" name="totalTime" placeholder="" data-role="none"></textarea>
+					
+					<h3 class="textAreaText textAreaTextCategory">Category  :</h3>
+					<form action="" data-role="none">
+						<select name="category" class="newCategory" data-role="none">
 							<option value="breakfast">Breakfast</option>
 							<option value="lunch">Lunch</option>
 							<option value="dinner" selected>Dinner</option>
 							<option value="dessert">Dessert</option>
 						</select>
 					</form>
-					<textarea class="newIngredients" name="ingredients" rows="12" cols="32" placeholder="Ingredients"></textarea>
-					<textarea class="newInstructions" name="instructions" rows="12" cols="32" placeholder="Instructions"></textarea>
-					<textarea class="newNotes" name="notes" rows="6" cols="32" placeholder="Notes"></textarea>
-					<textarea class="newTags" name="tags" rows="6" cols="32" placeholder="Tags"></textarea>
+					<h3 class="textAreaText textAreaTextIngredients">Ingredients  :</h3>
+					<textarea class="newIngredients" name="ingredients" placeholder="" data-role="none"></textarea>
+					<h3 class="textAreaText textAreaTextInstructions">Instructions  :</h3>
+					<textarea class="newInstructions" name="instructions" placeholder="" data-role="none"></textarea>
+					<h3 class="textAreaText textAreaTextNotes">Notes  :</h3>
+					<textarea class="newNotes" name="notes" placeholder="" data-role="none"></textarea>
+					<h3 class="textAreaText textAreaTextTags">Tags  :</h3>
+					<textarea class="newTags" name="tags" placeholder="" data-role="none"></textarea>
 				</div>
 				<div data-role="footer">
 					<button class="button saveButton" name="save" type="submit">Save</button>
