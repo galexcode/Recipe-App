@@ -232,53 +232,81 @@ h2 {
 /* CREATE / EDIT RECIPE */
 
 .createRecipeArea {
-	position: relative;
+	position: absolute;
+	top: 112px;
 	width: 864px;
-	height: 616px;
-	padding: 40px;
+	overflow: visible;
+	margin-left: 40px;
+}
+
+.zerozero {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 10px;
+	height: 10px;
+	background-color: #f0f;
 }
 
 .addCoverPhoto {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	background-color: rgba(0,0,0,0.2);
+	background-color: rgba(0,0,0,0.1);
 	width: 160px;
 	height: 160px;
-	float: left;
+	line-height: 160px;
+	vertical-align: center;
+	text-align: center;
+}
+
+.addPhotos {
+	position: absolute;
+	top: 0px;
+	left: 528px;
+	background-color: rgba(0,0,0,0.1);
+	width: 336px;
+	height: 160px;
+	line-height: 160px;
+	vertical-align: center;
+	text-align: center;
 }
 
 textarea {
   resize: none;
   float: left;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
 }
 
 textarea.newName, textarea.newYield, textarea.newActiveTime, textarea.newTotalTime {
 	position: absolute;
-	width: 220px;		/* 230 - 224 = 6 */ /* +2 */
-	height: 24px;		/* 34 - 28 = 6 */ /* +2 */
+	width: 224px;		/* 230 - 224 = 6 */ /* +2 */
+	height: 28px;		/* 34 - 28 = 6 */ /* +2 */
 	border: 0;
 	background-color: rgba(0,0,0,0.1);
 }
 
 textarea.newName {
-	top: 48px;		/* 0 + 48 = 48 */
-	left: 328px;	/* 288 + 40 = 328 */
+	top: 0px;		/* 0 + 48 = 48 */
+	left: 288px;	/* 288 + 40 = 328 */
 }
 
 textarea.newYield {
-	top: 92px;		/* 44 + 48 = 92 */
-	left: 328px;	/* 288 + 40 = 328 */
+	top: 44px;		/* 44 + 48 = 92 */
+	left: 288px;	/* 288 + 40 = 328 */
 }
 
 textarea.newActiveTime {
-	top: 136px;		/* 88 + 48 = 136 */
-	left: 328px;	/* 288 + 40 = 328 */
+	top: 88px;		/* 88 + 48 = 136 */
+	left: 288px;	/* 288 + 40 = 328 */
 }
 
 textarea.newTotalTime {
-	top: 180px;		/* 132 + 48 = 180 */
-	left: 328px;	/* 288 + 40 = 328 */
+	top: 132px;		/* 132 + 48 = 180 */
+	left: 288px;	/* 288 + 40 = 328 */
 }
 
 textarea.placeholder {
@@ -289,7 +317,7 @@ textarea.placeholder {
 select.newCategory {
 	position: absolute;
 	top: 196px;
-	left: 40px;
+	left: 0px;
 	width: 160px;
 	height: 28px;
 	background-color: rgba(0,0,0,0.1);
@@ -307,14 +335,14 @@ select.newCategory {
 
 .textAreaTextContainer {
 	position: absolute;
-	top: 50px;
-	left: 225px;
+	top: 2px;
+	left: 185px;
 	text-align: right;
 }
 
 textarea.newIngredients, textarea.newInstructions {
 	position: absolute;
-	top: 244px;		/* 196 + 48 = 244 */
+	top: 196px;		/* 196 + 48 = 244 */
 	width: 336px;		
 	height: 420px;		
 	border: 0;
@@ -323,7 +351,7 @@ textarea.newIngredients, textarea.newInstructions {
 
 textarea.newNotes, textarea.newTags {
 	position: absolute;
-	left: 40; 		/* 0 + 40 */
+	left: 0px; 		/* 0 + 40 */
 	width: 160px;		
 	height: 160px;		
 	border: 0;
@@ -331,12 +359,40 @@ textarea.newNotes, textarea.newTags {
 }
 
 textarea.newIngredients {
-	left: 216px; 	/* 176 + 24 + 16 = 216 */
+	left: 176px; 	/* 176 + 24 + 16 = 216 */
 }
 
 textarea.newInstructions {
-	left: 568px; 	/* 528 + 24 + 16 = 568 */
+	left: 528px; 	/* 528 + 24 + 16 = 568 */
 }
+
+.textAreaTextCategory {
+	position: absolute;
+	left: 0px;
+	top: 172px;
+}
+.textAreaTextIngredients {
+	position: absolute;
+	left: 176px;
+	top: 172px;
+}
+.textAreaTextInstructions {
+	position: absolute;
+	left: 528px;
+	top: 172px;
+}
+.textAreaTextTags {
+	position: absolute;
+	left: 0px;
+	top: 236px;
+}
+.textAreaTextNotes {
+	position: absolute;
+	left: 0px;
+	top: 432px;
+}
+
+
 
 textarea.newTags {
 	top: 260px;		
@@ -347,4 +403,17 @@ textarea.newNotes {
 }
 
 
+.saveHoverButton {
+	position: fixed;
+	bottom: 0px;
+	left: 50%;
+	width: 80px;
+	height: 20px;
+	border-top-left-radius: 40px;
+	border-top-right-radius: 40px;
+	background-color: #f00;
+	text-align: center;
+	padding-top: 20px;
+	 
+}
 

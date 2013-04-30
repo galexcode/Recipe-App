@@ -53,7 +53,12 @@
 					<h1>Create Recipe</h1>
 				</div>
 				<div class="createRecipeArea" data-role="content">
-					<button class="addCoverPhoto" onclick="javascript:camera()"></button>
+					<div class="addCoverPhoto" onclick="javascript:camera()" data-role="none">
+						<span class="addPhotoText">Add Cover Photo</span>
+					</div>
+					<div class="addPhotos" onclick="javascript:camera()" data-role="none">
+						<span class="addPhotoText">Add Recipe Photos</span>
+					</div>
 					<img class="newCoverPhoto">
 					
 					<div class="textAreaTextContainer">
@@ -62,12 +67,12 @@
 						<h3 class="textAreaText textAreaTextActiveTime">Active Time  :</h3>
 						<h3 class="textAreaText textAreaTextTotalTime">Total Time  :</h3>
 					</div>
-					<textarea class="newName" name="name" placeholder="Recipe Name" data-role="none" ></textarea>
-					<textarea class="newYield" name="yield" placeholder="Yield" data-role="none"></textarea>
-					<textarea class="newActiveTime" name="activeTime" placeholder="Active Time" data-role="none"></textarea>
-					<textarea class="newTotalTime" name="totalTime" placeholder="Total Time" data-role="none"></textarea>
+					<textarea class="newName" name="name" placeholder="" data-role="none" ></textarea>
+					<textarea class="newYield" name="yield" placeholder="" data-role="none"></textarea>
+					<textarea class="newActiveTime" name="activeTime" placeholder="" data-role="none"></textarea>
+					<textarea class="newTotalTime" name="totalTime" placeholder="" data-role="none"></textarea>
 					
-					<h3 class="textAreaText textAreaTextCateogry">Category  :</h3>
+					<h3 class="textAreaText textAreaTextCategory">Category  :</h3>
 					<form action="" data-role="none">
 						<select name="category" class="newCategory" data-role="none">
 							<option value="breakfast">Breakfast</option>
@@ -76,17 +81,19 @@
 							<option value="dessert">Dessert</option>
 						</select>
 					</form>
-					<h3 class="textAreaText textAreaTextCateogry">Ingredients  :</h3>
-					<textarea class="newIngredients" name="ingredients" placeholder="Ingredients" data-role="none"></textarea>
-					<h3 class="textAreaText textAreaTextCateogry">Instructions  :</h3>
-					<textarea class="newInstructions" name="instructions" placeholder="Instructions" data-role="none"></textarea>
-					<h3 class="textAreaText textAreaTextCateogry">Notes  :</h3>
-					<textarea class="newNotes" name="notes" placeholder="Notes" data-role="none"></textarea>
-					<h3 class="textAreaText textAreaTextCateogry">Tags  :</h3>
-					<textarea class="newTags" name="tags" placeholder="Tags" data-role="none"></textarea>
+					<div class="zerozero"></div>
+					<h3 class="textAreaText textAreaTextIngredients">Ingredients  :</h3>
+					<textarea class="newIngredients" name="ingredients" placeholder="" data-role="none"></textarea>
+					<h3 class="textAreaText textAreaTextInstructions">Instructions  :</h3>
+					<textarea class="newInstructions" name="instructions" placeholder="" data-role="none"></textarea>
+					<h3 class="textAreaText textAreaTextNotes">Notes  :</h3>
+					<textarea class="newNotes" name="notes" placeholder="" data-role="none"></textarea>
+					<h3 class="textAreaText textAreaTextTags">Tags  :</h3>
+					<textarea class="newTags" name="tags" placeholder="" data-role="none"></textarea>
 				</div>
-				<div data-role="footer">
-					<button class="button save" name="save" type="submit" onclick="javascript:actionSaveRecipe('#createRecipe')">Save</button>
+				
+				<div class="button saveHoverButton" onclick="javascript:actionSaveRecipe('#createRecipe')">
+					Save
 				</div>
 			</div>
 			
