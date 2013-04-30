@@ -228,6 +228,7 @@ h2 {
 	left: 80px;
 	width: 944px;
 	height: 100%;
+	overflow: visible;
 }
 
 
@@ -431,8 +432,11 @@ textarea.newNotes {
 
 /* Cookbook page */
 .recipeCover {
+	position: relative;
+	left: -80px;
 	height: 688px;
 	width: 100%;
+	padding-left: 80px;
 	display: table;
 	background-color: #FFCF0D;
 	background-image: url('/var/mobile/Applications/6F4DBE8A-F6E0-4CF5-B6AB-4CAEC52A6BBB/Documents/photos/undefinedHIib6f2fVlO4G0b5yc7t.jpg');
