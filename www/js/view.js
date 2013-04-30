@@ -168,7 +168,12 @@ function showCoverPhotoPicker(parentDiv, recipe, isCoverPhoto, photoLink) {
 		if (isCoverPhoto == true) {
 			$(parentDiv+" .addCoverPhoto").css("background-image", "url('"+imagePath+"')");
 		} else {
-			var newImage = $("<div data-link='"+photoLink+"' class='linkedPhotoThumb'></div>").css("background-image", "url('"+imagePath+"')");
+			var newImage = $("<div class='linkedPhotoThumb'></div>").css("background-image", "url('"+imagePath+"')").data("link", photoLink);
+			 $(parentDiv+" .addPhotosHolder .linkedPhotoThumb").each(function() {
+				if ($(this).data('link') == photoLink) {
+					$(this).remove();
+				}
+			 });
 			$(parentDiv+" .addPhotosHolder").append(newImage);
 		}
 	};
