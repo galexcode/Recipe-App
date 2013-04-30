@@ -128,6 +128,9 @@ function actionSaveRecipe(parentDiv, oldRecipe) {
 	} else {
 		if (oldRecipe) {
 			deleteRecipe(oldRecipe);
+		} else {
+			//if we don't have an old recipe, that means we are making a new one. so we can clear the existing one.
+			clearRecipeContents();
 		}
 		saveRecipe(recipe);
 		displayRecipe(recipe);

@@ -11,7 +11,9 @@ function setupNavigationBar() {
 
 
 function clearRecipeContents() {
-	$('#createRecipe textarea').html('');  // first pass an empty string to clear the html
+	$('#createRecipe textarea').val('');  // first pass an empty string to clear the html
+	$("#createRecipe .addCoverPhoto").css("background-image", "none");
+	$("#createRecipe .addPhotosHolder").html('');
 }
 
 function createOrEditRecipe(parentDiv) {
