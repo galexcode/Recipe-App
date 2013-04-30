@@ -20,6 +20,23 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
+
+
+
+@font-face {
+    font-family: 'cylburn_regularregular';
+    src: url('../fonts/cylburn/cylburn-webfont.eot');
+    src: url('../fonts/cylburn/cylburn-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/cylburn/cylburn-webfont.woff') format('woff'),
+         url('../fonts/cylburn/cylburn-webfont.ttf') format('truetype'),
+         url('../fonts/cylburn/cylburn-webfont.svg#cylburn_regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
@@ -491,7 +508,8 @@ textarea.newNotes {
 
 
 
-/* Cookbook page */
+/* COOKBOOK PAGE */
+
 .recipeCover {
 	position: relative;
 	left: -80px;
@@ -502,16 +520,41 @@ textarea.newNotes {
 	background-image: url('/var/mobile/Applications/6F4DBE8A-F6E0-4CF5-B6AB-4CAEC52A6BBB/Documents/photos/undefinedHIib6f2fVlO4G0b5yc7t.jpg');
 	background-size: cover;
 }
+
 .displayName {
 	display: table-cell;
     vertical-align: middle;
     text-align: center;
-    width: 80%;
+    width: 60%;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-family: 'cylburn_regularregular';
+	font-weight: 400;
+	font-size: 120px;
+	line-height: 130px;
+	color: #ffffff;
+	text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.6);
+	opacity: 0.9;
+	text-transform: capitalize;
 }
+
 .metadata {
 	min-height: 60px;
 	margin-top: 20px;
 }
+
+.metadata span {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	color: #D45846;
+	padding-right: 16px;
+}
+
+.metadata .innerText {
+	color: #000000;
+}
+
 .editButton {
 	float: right;
 }
@@ -521,21 +564,44 @@ textarea.newNotes {
 	width: 688px;
 	margin-bottom: 40px;
 }
+
+.twocols {
+	margin-top: -38px; /* no idea why there's extra space here */
+}
+
 .col1, .col2 {
 	float: left;
 	width: 336px;
-	background-color: #FF00DD;
+	/* background-color: #FF00DD; */
 }
+
 .col2 {
 	margin-left: 16px;
-	background-color: #AA00FF;
+	/* background-color: #AA00FF; */
 }
+
 .twocols:after {
 	content: "."; 
    visibility: hidden; 
    display: block; 
    height: 0; 
    clear: both;
+}
+
+.twocols h4 {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	color: #D45846;
+	margin-bottom: -12px; /* no idea why there's so much extra space */
+}
+
+.twocols p {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	color: #000000;
+	margin-top: -
 }
 
 .photoGallery {
@@ -564,7 +630,8 @@ textarea.newNotes {
 
 
 
-/** Cookbook Gallery **/
+/** COOKBOOK GALLERY **/
+
 .cookbookGallery {
 	position: relative;
 	left: -80px;
