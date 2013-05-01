@@ -114,6 +114,13 @@ h1 {
     background-position: 32px -1px;
 }
 
+#settings h1 {
+	background-image: url("../img/settings_background_2X.png");
+    background-repeat: no-repeat;
+    background-size: 880px 80px;
+    background-position: 32px -1px;
+}
+
 h2 {
     font-family: 'Lato', sans-serif;
     font-weight: 300;
@@ -281,6 +288,15 @@ h2 {
 	width: 944px;
 	height: 100%;
 	overflow: visible;
+}
+
+#settings p {
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	color: #00000;
+	font-style: italic;
+	margin-left: 40px;
 }
 
 
