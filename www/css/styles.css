@@ -886,8 +886,8 @@ textarea.newNotes {
 	color: #000000;
 }
 
-.twocols listIngredients, .twocols listInstructions {
-	margin-left: -16px;
+.twocols .listIngredients ul, .twocols .listInstructions ol {
+	margin-left: -12px;
 }
 
 .twocols li {
