@@ -23,6 +23,12 @@
 
 
 
+
+
+
+
+/** FONTS  *//
+
 @font-face {
     font-family: 'cylburn_regularregular';
     src: url('../fonts/cylburn/cylburn-webfont.eot');
@@ -34,8 +40,91 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'nixie_oneregular';
+    src: url('../fonts/nixie/nixieone-regular-webfont.eot');
+    src: url('../fonts/nixie/nixieone-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/nixie/nixieone-regular-webfont.woff') format('woff'),
+         url('../fonts/nixie/nixieone-regular-webfont.ttf') format('truetype'),
+         url('../fonts/nixie/nixieone-regular-webfont.svg#nixie_oneregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'latobold';
+    src: url('../fonts/lato/lato-bold-webfont.eot');
+    src: url('../fonts/lato/lato-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lato/lato-bold-webfont.woff') format('woff'),
+         url('../fonts/lato/lato-bold-webfont.ttf') format('truetype'),
+         url('../fonts/lato/lato-bold-webfont.svg#latobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'latobold_italic';
+    src: url('../fonts/lato/lato-bolditalic-webfont.eot');
+    src: url('../fonts/lato/lato-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lato/lato-bolditalic-webfont.woff') format('woff'),
+         url('../fonts/lato/lato-bolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/lato/lato-bolditalic-webfont.svg#latobold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'latoitalic';
+    src: url('../fonts/lato/lato-italic-webfont.eot');
+    src: url('../fonts/lato/lato-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lato/lato-italic-webfont.woff') format('woff'),
+         url('../fonts/lato/lato-italic-webfont.ttf') format('truetype'),
+         url('../fonts/lato/lato-italic-webfont.svg#latoitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'latolight';
+    src: url('../fonts/lato/lato-light-webfont.eot');
+    src: url('../fonts/lato/lato-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lato/lato-light-webfont.woff') format('woff'),
+         url('../fonts/lato/lato-light-webfont.ttf') format('truetype'),
+         url('../fonts/lato/lato-light-webfont.svg#latolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'latolight_italic';
+    src: url('../fonts/lato/lato-lightitalic-webfont.eot');
+    src: url('../fonts/lato/lato-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lato/lato-lightitalic-webfont.woff') format('woff'),
+         url('../fonts/lato/lato-lightitalic-webfont.ttf') format('truetype'),
+         url('../fonts/lato/lato-lightitalic-webfont.svg#latolight_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'latoregular';
+    src: url('../fonts/lato/lato-regular-webfont.eot');
+    src: url('../fonts/lato/lato-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lato/lato-regular-webfont.woff') format('woff'),
+         url('../fonts/lato/lato-regular-webfont.ttf') format('truetype'),
+         url('../fonts/lato/lato-regular-webfont.svg#latoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
+
+
+
+
+
+
+/** APP **/
 
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
@@ -80,8 +169,17 @@ body {
     }
 }
 
+
+
+
+
+
+
+
+/** H1 **/
+
 h1 {
-    font-family: 'Nixie One', cursive;
+    font-family: 'nixie_oneregular';
     font-weight: 400;
     font-size: 60px;
     text-align: center;
@@ -121,8 +219,17 @@ h1 {
     background-position: 32px -1px;
 }
 
+
+
+
+
+
+
+
+/** GRID VIEW **/
+
 h2 {
-    font-family: 'Lato', sans-serif;
+    font-family: 'latolight';
     font-weight: 300;
     font-size: 20px;
     margin: 0px;
@@ -207,6 +314,8 @@ h2 {
 
 
 
+/** NAVIGATION LINKS **/
+
 #header {
 	position: fixed;
 	top: 0;
@@ -281,6 +390,15 @@ h2 {
 	background-position-x: 100%;
 }
 
+
+
+
+
+
+
+
+/** BODY **/
+
 #container {
 	position: relative;
 	top: 0px;
@@ -290,8 +408,16 @@ h2 {
 	overflow: visible;
 }
 
+
+
+
+
+
+
+/** SETTINGS **/
+
 #settings p {
-	font-family: 'Lato', sans-serif;
+	font-family: 'latolight_italic';
 	font-weight: 300;
 	font-size: 16px;
 	color: #00000;
@@ -302,7 +428,11 @@ h2 {
 
 
 
-/* CREATE / EDIT RECIPE */
+
+
+
+
+/** CREATE / EDIT RECIPE **/
 
 .createRecipeArea {
 	position: absolute;
@@ -312,6 +442,7 @@ h2 {
 	margin-left: 40px;
 }
 
+/*
 .zerozero {
 	position: absolute;
 	left: 0px;
@@ -320,6 +451,7 @@ h2 {
 	height: 10px;
 	background-color: #f0f;
 }
+*/
 
 .addCoverPhoto {
 	position: absolute;
@@ -341,7 +473,7 @@ h2 {
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0,0,0,0.2);
-	font-family: 'Lato', sans-serif;
+	font-family: 'latolight';
 	font-weight: 300;
 	font-size: 16px;
 	color: #ffffff;
@@ -386,7 +518,7 @@ textarea {
 	border: none;
 	outline: none;
 	padding: 6px;
-	font-family: 'Lato', sans-serif;
+	font-family: 'latolight';
 	font-weight: 300;
 	font-size: 16px;
 	line-height: 22px;
@@ -404,23 +536,23 @@ textarea.newName, textarea.newYield, textarea.newActiveTime, textarea.newTotalTi
 }
 
 textarea.newName {
-	top: 0px;		/* 0 + 48 = 48 */
-	left: 288px;	/* 288 + 40 = 328 */
+	top: 0px;	
+	left: 288px;	
 }
 
 textarea.newYield {
-	top: 44px;		/* 44 + 48 = 92 */
-	left: 288px;	/* 288 + 40 = 328 */
+	top: 44px;
+	left: 288px;
 }
 
 textarea.newActiveTime {
-	top: 88px;		/* 88 + 48 = 136 */
-	left: 288px;	/* 288 + 40 = 328 */
+	top: 88px;	
+	left: 288px;	
 }
 
 textarea.newTotalTime {
-	top: 132px;		/* 132 + 48 = 180 */
-	left: 288px;	/* 288 + 40 = 328 */
+	top: 132px;	
+	left: 288px;
 }
 
 textarea.placeholder {
@@ -438,13 +570,18 @@ select.newCategory {
 }
 
 .createRecipeArea h3 {
-	font-family: 'Lato', sans-serif;
+	font-family: 'latolight';
 	font-weight: 300;
 	font-size: 16px;
 	line-height: 22px;
 	margin: 0;
 	padding: 0 0 22px 0;
 	height: 22px;
+	color: #000000;
+}
+
+.lighter {
+	color: #cccccc;
 }
 
 .textAreaTextContainer {
@@ -553,11 +690,13 @@ textarea.newNotes {
 	-moz-box-shadow: 0 0 64px 16px rgba(0,0,0,0.2);
 	-webkit-box-shadow: 0 0 64px 16px rgba(0,0,0,0.2);
 	box-shadow: 0 0 64px 16px rgba(0,0,0,0.2);
-	font-family: 'Lato', sans-serif;
-	font-weight: 200;
+	font-family: 'latolight_italic';
+	font-weight: 300;
 	font-size: 16px;
 	font-style: italic;
 	text-transform: lowercase;
+	text-align: center;
+	line-height: 428px;
 }
 
 .bigPopup .optionOne, .bigPopup .optionTwo {
@@ -584,7 +723,7 @@ textarea.newNotes {
 	position: fixed;
 	right: 0;
 	bottom: 20px;
-	font-family: 'Lato', sans-serif;
+	font-family: 'latobold';
 	font-weight: 700;
 	font-size: 16px;
 	line-height: 40px;
@@ -603,7 +742,7 @@ textarea.newNotes {
 	position: fixed;
 	right: 0;
 	bottom: 20px;
-	font-family: 'Lato', sans-serif;
+	font-family: 'latobold';
 	font-weight: 700;
 	font-size: 16px;
 	line-height: 40px;
@@ -624,7 +763,10 @@ textarea.newNotes {
 
 
 
-/* COOKBOOK PAGE */
+
+
+
+/** COOKBOOK VIEW **/
 
 .recipeCover {
 	position: relative;
@@ -672,7 +814,7 @@ textarea.newNotes {
 }
 
 .metadata span {
-	font-family: 'Lato', sans-serif;
+	font-family: 'latoregular';
 	font-weight: 400;
 	font-size: 16px;
 	color: #D45846;
@@ -692,7 +834,7 @@ textarea.newNotes {
 	position: fixed;
 	right: 0;
 	bottom: 20px;
-	font-family: 'Lato', sans-serif;
+	font-family: 'latobold';
 	font-weight: 700;
 	font-size: 16px;
 	line-height: 40px;
@@ -715,24 +857,22 @@ textarea.newNotes {
 .col1, .col2 {
 	float: left;
 	width: 336px;
-	/* background-color: #FF00DD; */
 }
 
 .col2 {
 	margin-left: 16px;
-	/* background-color: #AA00FF; */
 }
 
 .twocols:after {
 	content: "."; 
-   visibility: hidden; 
-   display: block; 
-   height: 0; 
-   clear: both;
+	visibility: hidden; 
+	display: block; 
+	height: 0; 
+	clear: both;
 }
 
 .twocols h4 {
-	font-family: 'Lato', sans-serif;
+	font-family: 'latoregular';
 	font-weight: 400;
 	font-size: 16px;
 	color: #D45846;
@@ -740,14 +880,14 @@ textarea.newNotes {
 }
 
 .twocols p {
-	font-family: 'Lato', sans-serif;
+	font-family: 'latoregular';
 	font-weight: 400;
 	font-size: 16px;
 	color: #000000;
 }
 
 .twocols listIngredients, .twocols listInstructions {
-	margin-left: -12px;
+	margin-left: -16px;
 }
 
 .twocols li {
@@ -794,6 +934,8 @@ textarea.newNotes {
 	float: left;
 	background-size: cover;
 }
+
+
 
 
 
