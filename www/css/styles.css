@@ -711,6 +711,9 @@ textarea.newNotes {
 	-moz-box-shadow: 0 0 64px 16px rgba(0,0,0,0.2);
 	-webkit-box-shadow: 0 0 64px 16px rgba(0,0,0,0.2);
 	box-shadow: 0 0 64px 16px rgba(0,0,0,0.2);
+}
+
+.bigPopup, .photoLinkPopup .nolinks {
 	font-family: 'latolight_italic';
 	font-weight: 300;
 	font-size: 16px;
@@ -718,6 +721,39 @@ textarea.newNotes {
 	text-transform: lowercase;
 	text-align: center;
 	line-height: 428px;
+}
+
+.linkedPhotoText {
+	padding: 1px;
+	border-bottom: 1px dotted #888888;
+}
+
+.photoLinkPopup ul {
+	margin-top: 40px;
+	margin-bottom: 40px;
+	height: 348px;
+	overflow: scroll;
+}
+
+.photoLinkPopup ul li {
+	font-family: 'latolight';
+	font-weight: 300;
+	font-size: 16px;
+	text-transform: lowercase;
+	font-style: normal;
+	text-align: left;
+	line-height: 40px;
+	color: #888888;
+	height: 40px;
+	padding-bottom: 16px;
+	display: block;
+}
+
+.linkPhotoThumb {
+	float: left;
+	width: 40px;
+	height: 40px;
+	margin-right: 16px;
 }
 
 .bigPopup .optionOne, .bigPopup .optionTwo {

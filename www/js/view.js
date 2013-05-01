@@ -260,8 +260,17 @@ function showPhotoLinkPopup(parentDiv, recipe) {
 		$('.photoLinkPopup').html('');  // first pass an empty string to clear the html
 		var ul = $('<ul></ul>').appendTo('.photoLinkPopup');
 		$(recipe.photoLinks).each(function(index, linkName) {
-			var li = $('<li></li>').text(linkName);
+			var li = $('<li></li>').html('<span class="linkedPhotoText">'+linkName+'</span>');
+			var linkPhotoThumb = $('<img class="linkPhotoThumb" src="img/popup_addphoto_2X.png"/>');
 			li.appendTo(ul);
+			for (i = 0; i < recipe.photos.length; i++) {
+				var photoObject = recipe.photos[i];
+				if (photoObject.link == linkName) {
+					linkPhotoThumb.attr("src", unUrl(photoObject.photo));	//  "url(...)"
+				}
+			}
+				
+			linkPhotoThumb.appendTo(li);
 			li.click(function() {
 				showCoverPhotoPicker(parentDiv, recipe, false, linkName);
 				$(parentDiv+" .photoLinkPopupBackground").fadeOut();
