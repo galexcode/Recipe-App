@@ -1,3 +1,5 @@
+/** APP **/
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -22,22 +24,22 @@ var app = {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
-
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
         console.log('Received Event: ' + id);
     }
 };
-
-
-
-
 
 // app.initialize();
    
    
    
+
+
+
+
+/** SETUP **/
+
    
 $(document).ready(function(){
 	refreshRecipeGrid();
@@ -45,8 +47,6 @@ $(document).ready(function(){
 	setupCreateRecipe();
 	setupTabs();
 });
-
-
 
 function setupTabs() {
 	$(document).on('pagebeforechange', function(event) {
@@ -73,6 +73,12 @@ function setupTabs() {
 
 
 
+
+
+
+
+/** CAMERA **/
+
 // function camera(){
 // 	var settings = {
 // 		quality: 100,
@@ -84,7 +90,10 @@ function setupTabs() {
 // }
 
 
-/** From http://stackoverflow.com/questions/9180731/phonegap-retrieve-photo-from-camera-roll-via-path **/
+/** 
+ * from http://stackoverflow.com/questions/9180731/phonegap-retrieve-photo-from-camera-roll-via-path 
+ * code modified by RJ Marsan 
+ **/
 function camera(nameOfRecipe, callbackWhenAllDone, source) {
 	var settings = { 
 		quality: 25, 
@@ -93,10 +102,7 @@ function camera(nameOfRecipe, callbackWhenAllDone, source) {
 		targetWidth: 2048,
 		//allowEdit : true,
 	};
-	
 	navigator.camera.getPicture(onPhotoURISuccess, fail, settings);
-	
-	
 	function onPhotoURISuccess(imageURI) {
 		window.resolveLocalFileSystemURI(imageURI, function(fileEntry) {
 			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSys) { 
@@ -105,34 +111,27 @@ function camera(nameOfRecipe, callbackWhenAllDone, source) {
 					}, fail); 
 			}, fail); 
 		}, fail);    
-	}
-		
+	}	
 	function onCopySuccess(entry) {
 		console.log("Photo Success: "+entry.fullPath);
 		//WE NEED TO DO SOMETHING WITH THIS RIGHT HERE.
 		callbackWhenAllDone(entry.fullPath);
 	}
-	
 	function fail(error) {
 		console.log("Photo Error: "+error.code);
-	}
-	
+	}	
 }
 
-function makeid(prefix) { //from http://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript
+/** 
+ * from http://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript
+ **/
+function makeid(prefix) {
     var text = prefix+"";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
     for( var i=0; i < 20; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
-
     return text;
 }
-
-
-/**********/
-
-
 
 // function cameraSuccess(imageData){
 // 	console.log("saved photo");
@@ -145,6 +144,12 @@ function makeid(prefix) { //from http://stackoverflow.com/questions/1349404/gene
 
 
 
+
+
+
+
+
+/** ACTIONS **/
 
 function actionSaveRecipe(parentDiv, oldRecipe) {
 	var recipe = createOrEditRecipe(parentDiv);
@@ -211,11 +216,16 @@ function actionSortRecipesByName() {
 	displayRecipeGrid(recipeArray);
 }
 
-
-
+/**
+ * code contributed by RJ Marsan
+ **/
 function actionTakeCoverPhoto(recipe, callbackWhenAllDone) {
 	camera(recipe.name, callbackWhenAllDone, Camera.PictureSourceType.CAMERA);
 }
+
+/**
+ * code contributed by RJ Marsan
+ **/
 function actionPickCoverPhoto(recipe, callbackWhenAllDone) {
 	camera(recipe.name, callbackWhenAllDone, Camera.PictureSourceType.PHOTOLIBRARY);
 }
